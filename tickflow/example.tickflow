@@ -1,6 +1,0 @@
-#index 0
-#assets 0
-
-start:
-    async_sub 0xA
-    stop
