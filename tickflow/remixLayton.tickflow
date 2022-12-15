@@ -1,4 +1,4 @@
-sh#index 0x59
+#index 0x59
 
 start:
 
@@ -162,11 +162,6 @@ rest 0xC0
 rest 0xA8
 
 // Expand your main sequence here as needed.
-
-
-
-
-
 
 // Leave this as it is.
 0x7C 7, 1, 0x28
@@ -960,7 +955,7 @@ switch
 			goto 0xC6
 		endif 
 		break 
-endswitch 
+endswitch
 goto 0xC7
 label 0xC6
 0xA7<3> 
@@ -979,11 +974,10 @@ debug "TICKFLOW >>> 0002\n"
 if 1
 	0x8C<1> 1
 endif 
-debug "TICKFLOW >>> 0003\n"
-stop 
+debug ""
+stop
 
-
-// Unloads all the graphics/sounds at the end of the game. 
+// Unloads all the graphics/sounds at the end of the game.
 unload:
 0x5F<1>
 0x62<1>
