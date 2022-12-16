@@ -1,0 +1,11 @@
+this project follows an informal format specification for Tickflow, which is loosely described here:
+- all commands must be indented by one level
+- use loc labels rather than the label command for gotos
+- loops are indented after the initial label, and get unindented for the break label
+- if a label is meant to be callable as a function ("sub", precede it with a comment saying "function [NAME]")
+- all custom-made includables must have a prefix in all their members (including those that aren't meant to be used by outsiders)
+    - example: games/village.tickflow has the prefix "village_"
+
+
+------ license ------
+this specification can be used by everyone but until it gets merged into Tickompiler or some other Tickflow decompiler, credit patataofcourse (me!) for this specification please

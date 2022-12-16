@@ -1,0 +1,91 @@
+#include "include/constants.tickflow"
+
+// function village_load
+village_load:
+    // ---- cellanims ----
+
+    // tangotronic
+    set_cellanim 2, u"rom:/cellanim/ctrTango_long.zlib", -1
+    village_loop1:
+        cellanim_busy 2
+        if false
+            goto village_break1
+        endif 
+        rest 1
+        goto village_loop1
+    village_break1:
+
+    // screwbot factory
+    set_cellanim 3, u"rom:/cellanim/rvlRobot_v0.zlib", -1
+    village_loop2:
+        cellanim_busy 3
+        if false
+            goto village_break2
+        endif 
+        rest 1
+        goto village_loop2
+    village_break2:
+
+    // working dough
+    set_cellanim 4, u"rom:/cellanim/rvlManju_long.zlib", -1
+    village_loop3:
+        cellanim_busy 4
+        if false
+            goto village_break3
+        endif 
+        rest 1
+        goto village_loop3
+    village_break3:
+
+    // ---- layouts ----
+    // (none)
+
+    // ---- effects ----
+
+    // tangotronic
+    set_effect 5, u"rom:/effect/ctrTango.zlib", -1
+    village_loop4:
+        effect_busy 5
+        if false
+            goto village_break4
+            endif
+        rest 1
+        goto village_loop4
+    village_break4:
+
+    // ---- models ----
+
+    // tangotronic
+    has_model 1
+    if false
+        set_model 1, u"rom:/model/[FILENAME].zlib", 1
+    endif 
+    village_loop5:
+        has_model 1
+        if true
+            goto village_break5
+        endif 
+        rest 1
+        goto village_loop5
+    village_break5:
+
+    // random ass block of code
+    0x83<1>
+    0xBB
+    if 0
+        0xBC 
+    endif 
+    sub 7
+    0xBD 
+    0x8C<2> 5
+
+    // aac
+
+    // finally, assign to the necessary scenes
+
+
+    stop
+
+village_unload:
+
+stop

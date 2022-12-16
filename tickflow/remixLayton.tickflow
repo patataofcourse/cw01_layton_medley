@@ -1,5 +1,9 @@
 #index 0x59
 
+#include "include/constants.tickflow"
+
+#include "game/village.tickflow"
+
 start:
 
 // Leave this as it is.
@@ -41,7 +45,7 @@ rest 0x18
 sub 5
 
 // This sub loads the first four (and in this template's default case, only four) games. 
-call loadInitialGames
+call village_load
 rest 0xC
 
 // Set this game's Epilogue IDs, see https://pastebin.com/vJzWn2vm
@@ -231,200 +235,6 @@ else
 	endif 
 endif 
 stop 
-
-// loadInitialGames loads in assets for the first (or only) four games that will appear in your remix.
-// The template will expect you to know which cellanim is for which game, as well as whether the games use effects/layouts.
-// Replace the files as necessary.
-loadInitialGames:
-
-set_cellanim 2, u"rom:/cellanim/agbBatter_remixLED.zlib", -1
-label 0x4D2
-cellanim_busy 2
-if 0
-	goto 0x10E1
-endif 
-rest 1
-goto 0x4D2
-label 0x10E1
-
-set_cellanim 3, u"rom:/cellanim/ntrNinja_remixLED.zlib", -1
-label 0x929
-cellanim_busy 3
-if 0
-	goto 0x1538
-endif 
-rest 1
-goto 0x929
-label 0x1538
-
-set_cellanim 4, u"rom:/cellanim/rvlGolf_remixLED.zlib", -1
-label 0xD80
-cellanim_busy 4
-if 0
-	goto 0x198F
-endif 
-rest 1
-goto 0xD80
-label 0x198F
-
-set_cellanim 5, u"rom:/cellanim/ctrSumou_remixLED.zlib", -1
-label 0x11D7
-cellanim_busy 5
-if 0
-	goto 0x1DE6
-endif 
-rest 1
-goto 0x11D7
-label 0x1DE6
-
-// Layout setup. Dog Ninja in Lush Remix is the only game to use layout files. Remove the slashes if you need to load a layout for another game (useful tip: in Notepad++ select the block of code you want to un-slash, right click, and hit "Block Uncomment")
-// Note that normally, layout slots for a certain game are that game's cellanim slot plus 2. In this template's unedited form, Dog Ninja's cellanim takes slot 3, meaning its layout slot is 5.
-
-//set_layout 4, u"rom:/layout/[FILENAME].zlib", -1
-//label 0x11C5
-//layout_busy 4
-//if 0
-//	goto 0x33A
-//endif 
-//rest 1
-//goto 0x11C5
-//label 0x33A
-
-set_layout 5, u"rom:/layout/ntrNinja.zlib", -1
-label 0x22C5
-layout_busy 5
-if 0
-	goto 0x44A
-endif 
-rest 1
-goto 0x22C5
-label 0x44A
-
-//set_layout 6, u"rom:/layout/[FILENAME].zlib", -1
-//label 0x33C5
-//layout_busy 6
-//if 0
-//	goto 0x44A
-//endif 
-//rest 1
-//goto 0x33C5
-//label 0x44A
-
-//set_layout 7, u"rom:/layout/[FILENAME].zlib", -1
-//label 0x44C5
-//layout_busy 7
-//if 0
-//	goto 0x55A
-//endif 
-//rest 1
-//goto 0x44C5
-//label 0x55A
-
-// Effect setup. Sumo Brothers in Lush Remix is the only game to use effect files. Remove the // from another block of code if you need to load effects for more games.
-// Games normally share the same effect and cellanim slot numbers.
-
-//set_effect 2, u"rom:/effect/[FILENAME].zlib", -1
-//label 0xCCC
-//effect_busy 2
-//if 0
-//	goto 0x1111
-//endif 
-//rest 1
-//goto 0xCCC
-//label 0x1111
-
-//set_effect 3, u"rom:/effect/[FILENAME].zlib", -1
-//label 0xDDD
-//effect_busy 3
-//if 0
-//	goto 0x2222
-//endif 
-//rest 1
-//goto 0xDDD
-//label 0x2222
-
-//set_effect 4, u"rom:/effect/[FILENAME].zlib", -1
-//label 0xEEE
-//effect_busy 4
-//if 0
-//	goto 0x3333
-//endif 
-//rest 1
-//goto 0xEEE
-//label 0x3333
-
-set_effect 5, u"rom:/effect/ctrSumou.zlib", -1
-label 0xFFF
-effect_busy 5
-if 0
-	goto 0x4444
-endif 
-rest 1
-goto 0xFFF
-label 0x4444
-
-// Model setup. Only Tangotronic 3000, Airboarder, and Rhythm Rally use models, so most likely you'll leave this in //.
-
-//has_model 1
-//if 0
-//	set_model 1, u"rom:/model/[FILENAME].zlib", 1
-//endif 
-//label 0x778
-//has_model 1
-//if 1
-//	goto 0x779
-//endif 
-//rest 1
-//goto 0x778
-//label 0x779
-
-
-// Leave this alone.
-0x83<1> 
-0xBB 
-if 0
-	0xBC 
-endif 
-sub 7
-0xBD 
-0x8C<2> 5
-
-// Which song will be loaded and used
-0x61 0, u"remix_led_final"
-rest 0xC
-
-// SFX setup. You are also expected to know which SFX is associated with which game.
-set_sfx 1, u"GROUP_AGB_BATTER"
-rest 0xC
-set_sfx 2, u"GROUP_NTR_NINJA"
-rest 0xC
-set_sfx 3, u"GROUP_GOLF"
-rest 0xC
-set_sfx 4, u"GROUP_SUMOU"
-rest 0xC
-sub 3
-0x83 0
-
-// E - engine ID. See https://pastebin.com/0wJ3jN59 for game engine IDs.
-// The loaders in // should only have their // removed if the slot actually has something to be loaded in.
-
-game_cellanim 0, 2
-game_cellanim 0x16, 3
-game_cellanim 0x25, 4
-game_cellanim 0x3C, 5
-//game_effect E, 2
-//game_effect E, 3
-//game_effect E, 4
-game_effect 0x3C, 5
-//game_layout E, 4
-game_layout 0x16, 5
-//game_layout E, 6
-//game_layout E, 7
-//game_model E, 0
-//game_model E, 1
-//game_model E, 2
-//game_model E, 3
-return 
 
 // To replace game assets on the fly like in the medley remixes, use this sub template. You'll need to copy/paste this for multiple game asset swaps, also akin to the medley remixes.
 // See this for notes and info about this template: https://pastebin.com/SDRELgnz

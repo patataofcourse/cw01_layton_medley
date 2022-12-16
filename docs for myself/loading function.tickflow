@@ -1,0 +1,91 @@
+loadInitialGames:
+
+set_cellanim 2, u"rom:/cellanim/agbBatter_remixLED.zlib", -1
+label 0x4D2
+cellanim_busy 2
+if 0
+	goto 0x10E1
+endif 
+rest 1
+goto 0x4D2
+label 0x10E1
+
+set_layout 5, u"rom:/layout/ntrNinja.zlib", -1
+label 0x22C5
+layout_busy 5
+if 0
+	goto 0x44A
+endif 
+rest 1
+goto 0x22C5
+label 0x44A
+
+set_effect 5, u"rom:/effect/ctrSumou.zlib", -1
+label 0xFFF
+effect_busy 5
+if 0
+	goto 0x4444
+endif 
+rest 1
+goto 0xFFF
+label 0x4444
+
+has_model 1
+if 0
+	set_model 1, u"rom:/model/[FILENAME].zlib", 1
+endif 
+label 0x778
+has_model 1
+if 1
+	goto 0x779
+endif 
+rest 1
+goto 0x778
+label 0x779
+
+// random ass block of code
+0x83<1>
+0xBB
+if 0
+	0xBC 
+endif 
+sub 7
+0xBD 
+0x8C<2> 5
+
+// AAC
+0x61 0, u"remix_led_final"
+rest 0xC
+
+// SFX setup. You are also expected to know which SFX is associated with which game.
+set_sfx 1, u"GROUP_AGB_BATTER"
+rest 0xC
+set_sfx 2, u"GROUP_NTR_NINJA"
+rest 0xC
+set_sfx 3, u"GROUP_GOLF"
+rest 0xC
+set_sfx 4, u"GROUP_SUMOU"
+rest 0xC
+sub 3
+0x83 0
+
+// E - engine ID. See https://pastebin.com/0wJ3jN59 for game engine IDs.
+// The loaders in // should only have their // removed if the slot actually has something to be loaded in.
+
+game_cellanim 0, 2
+game_cellanim 0x16, 3
+game_cellanim 0x25, 4
+game_cellanim 0x3C, 5
+//game_effect E, 2
+//game_effect E, 3
+//game_effect E, 4
+game_effect 0x3C, 5
+//game_layout E, 4
+game_layout 0x16, 5
+//game_layout E, 6
+//game_layout E, 7
+//game_model E, 0
+//game_model E, 1
+//game_model E, 2
+//game_model E, 3
+return 
