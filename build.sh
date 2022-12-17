@@ -11,4 +11,6 @@ cp -rf tempo/* bin/
 java -jar ../tickompiler.jar p bin base.bin || exit 1
 cp -f C00.bin $CITRA_DIR/sdmc/rhmm
 
-$CITRA
+if ! ps | grep citra-qt > /dev/null; then
+    $CITRA
+fi

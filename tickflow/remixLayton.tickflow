@@ -1,964 +1,353 @@
-#index 0x59
+// remixLayton.tickflow
+//   Professor Layton medley by patataofcourse
+//   Depends on the following includable files:
+//     .
+//     ├── include
+//     │   ├── constants.tickflow
+//     │   └── remixTemplate.tickflow
+//	   └── games
+//         └── village.tickflow
+//
+//   To anyone who wants to merge this mod into a bigger modpack, please follow these conditions:
+//     a. include source or a link to my release
+//     b. if you include source and change the names of any includables, modify the directory tree above
+//
+//   funny top hat man
 
+// -------------
+// --- SETUP ---
+// -------------
+
+// changing these should be enough to move everything (index, tempo, prologue, epilogue)
+#index 0x59
+LAYTON_index = 0x59
+LAYTON_tempo = 0x10000C7
+
+
+#assets 0xDEADBEEF // the assets sub is a social construct
+
+// ----------------
+// --- INCLUDES ---
+// ----------------
+
+// constants.tickflow ALWAYS comes first!
 #include include/constants.tickflow
+
+// Reference files such as stuff extracted from the original Remix Template 
+#include include/remixTemplate.tickflow
+
+// Subdivisions of the main tickflow, one per section
 #include games/village.tickflow
 
+// -----------------
+// --- MAIN GAME ---
+// -----------------
+
 start:
+	set_cat 0
 
-// Leave this as it is.
-play_sfx 0x1000294
-rest 0xC
-play_sfx 0x100029B
-0x2D 0
-0x8C 1
+	// Common to initialization of all games: plays jingle, disables pausing, enables loading icon
+	play_sfx 0x1000294
+	rest 0xC
+	play_sfx 0x100029B
+	0x2D 0
+	0x8C 1
 
-// 0xA6 determines whether the prologue screen will have a practice option (0 = A/X to skip, 1 = A to practice/X to skip).
-// 0xA4 is the Prologue ID. See https://pastebin.com/vJzWn2vm (same as #index)
-0xA6 0
-0xA4 0x5E
+	// 0xA6 determines whether the prologue screen will have a practice option (0 = A/X to skip, 1 = A to practice/X to skip).
+	// 0xA4 is the index for the prologue
+	0xA6 0
+	0xA4 LAYTON_index
 
-//Leave this stuff alone. 0x75<1> checks to see if you started over. This is why you see the prologue only once normally.
-0x75<1> 
-if 0
-	0xA5 1
-	0xA4<2> 1
-	// The prologue sub is at the very bottom of this template. Unless you know what you're doing, don't mess with it.
-	async_call prologue
-else 
-	0xA6<1> 0
-	0x75 0
-endif 
-set_cat 0
-0x21 0x78
-speed 0x100
-input 0
-0x7C<3> 1
-if 0
-	0x7C 1, 0, 0x18
-endif 
-0x7C<3> 2
-if 0
-	0x7C 2, 0, 0x18
-endif 
-rest 0x18
-sub 5
+	// Runs prologue if you hadn't started over before
+	0x75<1> 
+	if 0
+		0xA5 1
+		0xA4<2> 1
+		async_call prologue
+	else 
+		0xA6<1> 0
+		0x75 0
+	endif
 
-// This sub loads the first four (and in this template's default case, only four) games. 
-call village_load
-rest 0xC
+	// idk what this does but it starts by setting tempo to 120?
+	0x21 120
+	speed 0x100
+	input 0
+	0x7C<3> 1
+	if 0
+		0x7C 1, 0, 0x18
+	endif 
+	0x7C<3> 2
+	if 0
+		0x7C 2, 0, 0x18
+	endif 
+	rest 0x18
+	sub 5
 
-// Set this game's Epilogue IDs, see https://pastebin.com/vJzWn2vm
-0xA8<1> 0x5E
-0xA8<4> 0x5E
+	// load Curious Village
+	call village_load
+	rest 0xC
 
-// Leave all this alone.
-sub 9
-sub 6
-0x81 
-if 1
+	// which epilogue index to use
+	0xA8<1> LAYTON_index
+	0xA8<4> LAYTON_index
+
+	// "Leave all this alone." - ehg
+	sub 9
+	sub 6
 	0x81 
 	if 1
-		0x84<1> 
-		label 0x321F
-		rest 0xC
 		0x81 
 		if 1
-			0x84<2> 2
-			if 0
-				goto 0x321F
+			0x84<1> 
+			label 0x321F
+			rest 0xC
+			0x81 
+			if 1
+				0x84<2> 2
+				if 0
+					goto 0x321F
+				endif 
 			endif 
 		endif 
-	endif 
-	0x82 0x3E8
-	rest 0xC
-	label 0x3DB
-	0x81 
-	if 1
-		0x82<1> 
-		if 0
-			rest 1
-			goto 0x3DB
+		0x82 0x3E8
+		rest 0xC
+		label 0x3DB
+		0x81 
+		if 1
+			0x82<1> 
+			if 0
+				rest 1
+				goto 0x3DB
+			endif 
 		endif 
+		rest_reset 
 	endif 
-	rest_reset 
-endif 
-rest 0xC
-0x88 
-if 1
-	0x8A<3> 1
-endif 
-0x2D 1
+	rest 0xC
+	0x88 
+	if 1
+		0x8A<3> 1
+	endif 
+	0x2D 1
 
-// 0x2B is pretty important for proper setup of some games. See https://pastebin.com/UDybG1gG for notes and info about the 0x2B operation.
-0x2B 0, 6
-0x2B 0x16, 6
-0x2B 0x25, 6
-0x2B 0x3C, 6
+	//TODO: proper 0x2B setups (cant be bothered)
+	0x2B 0, 6
+	0x2B 0x16, 6
+	0x2B 0x25, 6
+	0x2B 0x3C, 6
 
-// Leave this alone.
-0x21 0x78
-speed 0x100
-0xB1 
-engine<4> 1
-async_call assets
-0x7C<1> 7, 1, 1
-fade 2, 1, 0
+	// i also don't know what this is
+	0x21 120
+	speed 0x100
+	0xB1 
+	engine<4> 1
+	async_call assets_
+	0x7C<1> 7, 1, 1
+	fade 2, 1, 0
 
+	// 0x8C X enables/disables the loading icon. 0 = disable, 1 = enable
+	// 0x8E and 0x8F both determine which rating message the following code will be assigned to.
+	// Use the "input" operation to determine whether you can input or not. 0 = cannot input, 1 = can input.
+	0x8C 0
+	0x8E 0
+	0x8F 3
+	input 1
 
-// 0x8C X enables/disables the loading icon. 0 = disable, 1 = enable
-// 0x8E and 0x8F both determine which rating message the following code will be assigned to.
-// Use the "input" operation to determine whether you can input or not. 0 = cannot input, 1 = can input.
-0x8C 0
-0x8E 0
-0x8F 3
-input 0
+	// Main sequence!
 
+	call changeEngine
+	engine SCENE_ctrTango
+	sub 4
+	0x29<2> 
+	call tempoAndMusic
+	async_call startingGame
+	rest 0xC0
+	rest 0xC0
+	rest 0xC0
+	rest 0xA8
 
+	call changeEngine
+	engine SCENE_rvlRobot
+	sub 4
+	0x29<2> 
+	async_call subNameHere
+	rest 0x18
+	rest 0xC0
+	rest 0xC0
+	rest 0xC0
+	rest 0xA8
 
+	call changeEngine
+	engine SCENE_rvlManju
+	sub 4
+	0x29<2> 
+	async_call subNameHere2
+	rest 0x18
+	rest 0xC0
+	rest 0xC0
+	rest 0xC0
+	rest 0xA8
 
-// See this for information about the main sequence, game sequences, and game sequence sections: https://pastebin.com/SyhaZJRt
-// See this for information about changing the engine/scene: https://pastebin.com/nJnyjuHe
-
-call changeEngine
-engine SCENE_ctrTango
-sub 4
-0x29<2> 
-call tempoAndMusic
-0x10C 0, -0x320, 0x5DC
-async_call startingGame
-rest 0xC0
-rest 0xC0
-rest 0xC0
-rest 0xA8
-
-call changeEngine
-engine SCENE_rvlRobot
-sub 4
-0x29<2> 
-async_call subNameHere
-rest 0x18
-rest 0xC0
-rest 0xC0
-rest 0xC0
-rest 0xA8
-
-call changeEngine
-engine SCENE_rvlManju
-sub 4
-0x29<2> 
-async_call subNameHere2
-rest 0x18
-rest 0xC0
-rest 0xC0
-rest 0xC0
-rest 0xA8
-
-// Expand your main sequence here as needed.
-
-// Leave this as it is.
-0x7C 7, 1, 0x28
-rest 0xC0
-play_sfx 0x100029F
-0x8C 1
-call unload
-0x2D 0
-sub 0xB
-stop 
-
+	// End the game, unload everything, and do results screen
+	0x7C 7, 1, 0x28
+	rest 0xC0
+	play_sfx 0x100029F
+	0x8C 1
+	call unload
+	0x2D 0
+	// sub 0xB
+	stop
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------------
 
 
 // Epilogue/rating asset loading, scoring configuration, and Challenge Land-related stuff activation.
-assets:
-set_cat 0
-0x92 3, 0x14
-0x93 3, 0x10, "remix_cp_RM_NRM_Hi", "remix_cp_RM_NRM_Ng"
-0x94 0, "result_common_Hi", "result_common_Ok", "result_common_Ng"
-0x95 0x10, "remix_caption"
-0x92 4, 0x14
-0x93 4, 0x10, "remix_cp_RM_KEP_Hi", "remix_cp_RM_KEP_Ng"
-0x94 0, "result_common_Hi", "result_common_Ok", "result_common_Ng"
-0x95 0x10, "remix_caption"
-0x92 5, 0x14
-0x93 5, 0x10, "remix_cp_RM_AIM_Hi", "remix_cp_RM_AIM_Ng"
-0x94 0, "result_common_Hi", "result_common_Ok", "result_common_Ng"
-0x95 0x10, "remix_caption"
-0x92 6, 0x14
-0x93 6, 0x10, "remix_cp_RM_RPT_Hi", "remix_cp_RM_RPT_Ng"
-0x94 0, "result_common_Hi", "result_common_Ok", "result_common_Ng"
-0x95 0x10, "remix_caption"
-0x92 7, 0x14
-0x93 7, 0x10, "remix_cp_STAR_Hi", "remix_cp_STAR_Ng"
-0x94 0, "result_common_Hi", "result_common_Ok", "result_common_Ng"
-0x95 0x10, "remix_caption"
-0x95 0x10, "remix_LED_caption"
-// If you include a Skill Star in your Remix, change the Y value of 0x98 X, Y to however many inputs are done while the Skill Star is forming. For example, Final Remix sets it to 4 because there are 4 hits needed for the last LumBEARjack object.
-0x98 1, 1
-rest 0x60
-0x88 
-if 1
-	0x88<1> 
+assets_:
+	set_cat 0
+	0x92 3, 0x14
+	0x93 3, 0x10, "remix_cp_RM_NRM_Hi", "remix_cp_RM_NRM_Ng"
+	0x94 0, "result_common_Hi", "result_common_Ok", "result_common_Ng"
+	0x95 0x10, "remix_caption"
+	0x92 4, 0x14
+	0x93 4, 0x10, "remix_cp_RM_KEP_Hi", "remix_cp_RM_KEP_Ng"
+	0x94 0, "result_common_Hi", "result_common_Ok", "result_common_Ng"
+	0x95 0x10, "remix_caption"
+	0x92 5, 0x14
+	0x93 5, 0x10, "remix_cp_RM_AIM_Hi", "remix_cp_RM_AIM_Ng"
+	0x94 0, "result_common_Hi", "result_common_Ok", "result_common_Ng"
+	0x95 0x10, "remix_caption"
+	0x92 6, 0x14
+	0x93 6, 0x10, "remix_cp_RM_RPT_Hi", "remix_cp_RM_RPT_Ng"
+	0x94 0, "result_common_Hi", "result_common_Ok", "result_common_Ng"
+	0x95 0x10, "remix_caption"
+	0x92 7, 0x14
+	0x93 7, 0x10, "remix_cp_STAR_Hi", "remix_cp_STAR_Ng"
+	0x94 0, "result_common_Hi", "result_common_Ok", "result_common_Ng"
+	0x95 0x10, "remix_caption"
+	0x95 0x10, "remix_LED_caption"
+	// If you include a Skill Star in your Remix, change the Y value of 0x98 X, Y to however many inputs are done while the Skill Star is forming. For example, Final Remix sets it to 4 because there are 4 hits needed for the last LumBEARjack object.
+	0x98 1, 1
+	rest 0x60
+	0x88 
 	if 1
-		0x88<2> 
-		switch 
-			case 1
-				0x8A<4> 1, 1
-				break 
-			case 2
-				0x8A<4> 1, 2
-				break 
-			case 3
-				0x8A<4> 1, 3
-				break 
-		endswitch 
-	endif 
-else 
-	0xAB<3> 1
-	if 1
-		0xAC 0
+		0x88<1> 
+		if 1
+			0x88<2> 
+			switch 
+				case 1
+					0x8A<4> 1, 1
+					break 
+				case 2
+					0x8A<4> 1, 2
+					break 
+				case 3
+					0x8A<4> 1, 3
+					break 
+			endswitch 
+		endif 
 	else 
-		0xAD 0
+		0xAB<3> 1
+		if 1
+			0xAC 0
+		else 
+			0xAD 0
+		endif 
 	endif 
-endif 
-stop 
+	stop 
 
 // To replace game assets on the fly like in the medley remixes, use this sub template. You'll need to copy/paste this for multiple game asset swaps, also akin to the medley remixes.
 // See this for notes and info about this template: https://pastebin.com/SDRELgnz
 loadGAMENAME:
+	remove_cellanim 2
+	label 0x4D2
+	cellanim_busy 2
+	if 0
+		goto 0x10E1
+	endif 
+	rest 1
+	goto 0x4D2
+	label 0x10E1
+	set_cellanim 2, u"rom:/cellanim/[FILENAME].zlib", -1
+	rest 0xC
 
-remove_cellanim 2
-label 0x4D2
-cellanim_busy 2
-if 0
-	goto 0x10E1
-endif 
-rest 1
-goto 0x4D2
-label 0x10E1
-set_cellanim 2, u"rom:/cellanim/[FILENAME].zlib", -1
-rest 0xC
+	//remove_effect Y
+	//label 0x458
+	//effect_busy Y
+	//if 0
+	//	goto 0x83F
+	//endif 
+	//rest 1
+	//goto 0x458
+	//label 0x83F
+	//set_effect Y, u"rom:/effect/[FILENAME].zlib", -1
+	//rest 0xC
 
-//remove_effect Y
-//label 0x458
-//effect_busy Y
-//if 0
-//	goto 0x83F
-//endif 
-//rest 1
-//goto 0x458
-//label 0x83F
-//set_effect Y, u"rom:/effect/[FILENAME].zlib", -1
-//rest 0xC
+	//remove_layout Z
+	//label 0x458
+	//layout_busy Z
+	//if 0
+	//	goto 0x83F
+	//endif 
+	//rest 1
+	//goto 0x458
+	//label 0x83F
+	//set_layout Z, u"rom:/layout/[FILENAME].zlib", -1
+	//rest 0xC
 
-//remove_layout Z
-//label 0x458
-//layout_busy Z
-//if 0
-//	goto 0x83F
-//endif 
-//rest 1
-//goto 0x458
-//label 0x83F
-//set_layout Z, u"rom:/layout/[FILENAME].zlib", -1
-//rest 0xC
+	//has_model M
+	//if 1
+	//	remove_model M
+	//endif 
+	//rest 0xC
+	//has_model M
+	//if 0
+	//	set_model M, u"rom:/model/[FILENAME].zlib", 1
+	//endif 
 
-//has_model M
-//if 1
-//	remove_model M
-//endif 
-//rest 0xC
-//has_model M
-//if 0
-//	set_model M, u"rom:/model/[FILENAME].zlib", 1
-//endif 
+	remove_sfx 1
+	rest 0xC
+	sub 3
+	set_sfx 1, u"[GROUP_FILENAME]"
+	rest 0xC
 
-remove_sfx 1
-rest 0xC
-sub 3
-set_sfx 1, u"[GROUP_FILENAME]"
-rest 0xC
-
-game_cellanim 0, 2
-//game_effect E, Y
-//game_layout E, Z
-//game_model E, M
-stop 
+	game_cellanim 0, 2
+	//game_effect E, Y
+	//game_layout E, Z
+	//game_model E, M
+	stop 
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------------
-
-
-// This sub establishes the tempo of the remix, and also starts playing the loaded music.
-// Here's a list of which tempo file is for what game: https://docs.google.com/spreadsheets/d/1DROdmS546KAKig8KEzngnhQtqaY7DZ2LMK-0Ti1kf1U/edit?usp=sharing
-// The template's default tempo file, 0x10000C7, is, you guessed it, Lush Remix's tempo file. Change it to the tempo file you will use.
-tempoAndMusic:
-rest 0x30
-0x4F 0x10000C7
-0x23 0x10000C7
-speed 0x100
-rest 0x30
-0xBA 
-sub 1
-0x88 
-if 1
-	0x88<5> 
-endif 
-// 0x51 1 plays the loaded aac.
-0x51 1
-// Be sure to change this 0x10000C7 to whatever your new tempo file is, if it is different.
-0x63 0x10000C7
-return 
-
-
 
 // This is the starting game. It has a slower fade-in than the other example subs, but that's about it.
 // You may rename "startingGame" to whatever you want. If you rename it, make sure you call it by its new name in the main sequence, otherwise Tickompiler will crash when compiling.
 startingGame:
-0x8F 3
-// If your game needs it, game setup that shouldn't be seen by the player goes here, before the fade command.
-fade<1> 7, 1, 0x30
-rest 0x60
-input 1
-async_sub 0x53	// This sub activates Challenge Land stuff like monster goal, life goal, Perfects, etc. Usually you'll want to place it right before or during the very first input of the game.
-
-
-// Your game sequence can be created below. 
-// Megamix Game Documentation: https://drive.google.com/drive/folders/1gfrX1GJZhQfz4vR8HyQBV56OqO_rYHGG?usp=sharing
-// Useful rest values: https://pastebin.com/ekYxgZJN
-
-
-
-stop
-// If you haven't figured by now, "stop" marks the end of this sub.
-
-
-
-
+	0x8F 3
+	0x10C 0, -0x320, 0x5DC
+	// If your game needs it, game setup that shouldn't be seen by the player goes here, before the fade command.
+	fade<1> 7, 1, 0x30
+	rest 0x60
+	input 1
+	stop
 
 
 // Rename subNameHere to whatever you want.
 subNameHere:
-0x8F 3
-// If your game needs it, pre-transition setup goes here, before the fade command.
-rest 0x18
-fade<1> 1, 1, 1
-input 1
-// Your game sequence goes here.
-
-
-
-
-
-stop 
+	0x8F 3
+	// If your game needs it, pre-transition setup goes here, before the fade command.
+	rest 0x18
+	fade<1> 1, 1, 1
+	input 1
+	// Your game sequence goes here.
+	stop 
 
 subNameHere2:
-0x8F 3
-// If your game needs it, pre-transition setup goes here, before the fade command.
-rest 0x18
-fade<1> 1, 1, 1
-input 1
-// Your game sequence goes here.
-
-
-
-
-
-stop 
-
-// Copy/paste this sub as needed.
-subNameHere3:
-0x8F 3
-// If your game needs it, pre-transition setup goes here, before the fade command.
-rest 0x18
-fade<1> 1, 1, 1
-input 1
-// Your game sequence goes here.
-
-
-
-
-
-stop 
-
-
-
-// Additional subs may go here.
-
-
-//-----------------------------------------------------------------------------------------------------------------------------------
-//-----------------------------------------------------------------------------------------------------------------------------------
-
-
-// The scene changing sequence. Ew.
-changeEngine:
-0xAB<3> 1
-if 1
-	0xAC<3> 
-	if 1
-		0xAC<4> 
-		if 1
-			stop 
-		endif 
-	endif 
-endif 
-0x89<6> 
-if 1
-	0x8A<7> 
-	if 1
-		stop 
-	endif 
-endif 
-// The following async_subs disable pausing and a couple other things for 1.0 beats. This is likely to prevent disruption of transition.
-async_sub 0x12
-async_sub 0x17
-async_sub 0x1C
-input 0
-fade 1, 1, 1
-return 
-
-
-
-
-
-
-
-
-// Just gonna put the prologue sub all the way down here.
-prologue:
-set_cat 0
-0x21 0x78
-speed 0x100
-0x7C<3> 1
-if 0
-	0x7C 1, 0, 0x18
-endif 
-0x7C<3> 2
-if 0
-	0x7C 2, 0, 0x18
-endif 
-rest 0xC
-engine 0x49
-rest 0x18
-sub 4
-0x81 
-if 1
-	0x84<1> 
-	label 0x300
-	rest 0xC
-	0x81 
-	if 1
-		0x84<2> 0
-		if 0
-			goto 0x300
-		endif 
-	endif 
-endif 
-0xA4<2> 0
-rest 0x18
-0x81 
-if 1
-	0x82 0x3E8
-	rest 0xC
-	label 0x3DB
-	0x81 
-	if 1
-		0x82<1> 
-		if 0
-			rest 1
-			goto 0x3DB
-		endif 
-	endif 
-	rest_reset 
-endif 
-label 0xC8
-0x103 
-if 0
-	rest 6
-	goto 0xC8
-endif 
-0x7C<1> 7, 1, 0
-fade<1> 7, 1, 0
-0x76 7, 0
-0x100 
-rest 0x18
-0x88 
-if 0
-	0xAB<4> 
-	if 1
-		0xAB<1> 
-	endif 
-endif 
-0x102 
-label 0xC7
-0xA7 
-if 1
-	goto 0xC5
-endif 
-rest 0x18
-0x102<1> 0x18
-0x101 
-switch 
-	case 0x3E
-		0x102<2> 
-		if_geq 0x2B8
-			goto 0xC6
-		endif 
-		break 
-	case 0x3D
-		0x102<2> 
-		if_geq 0x228
-			goto 0xC6
-		endif 
-		break 
-	case 0x42
-		0x102<2> 
-		if_geq 0x258
-			goto 0xC6
-		endif 
-		break 
-	case 0x43
-		0x102<2> 
-		if_geq 0x1F8
-			goto 0xC6
-		endif 
-		break 
-	case 0x39
-		0x102<2> 
-		if_geq 0x1C8
-			goto 0xC6
-		endif 
-		break 
-	case 0x44
-		0x102<2> 
-		if_geq 0x288
-			goto 0xC6
-		endif 
-		break 
-	case 0x3F
-		0x102<2> 
-		if_geq 0x228
-			goto 0xC6
-		endif 
-		break 
-	case 0x3C
-		0x102<2> 
-		if_geq 0x228
-			goto 0xC6
-		endif 
-		break 
-	case 0x3A
-		0x102<2> 
-		if_geq 0x258
-			goto 0xC6
-		endif 
-		break 
-	case 0x3B
-		0x102<2> 
-		if_geq 0x258
-			goto 0xC6
-		endif 
-		break 
-	case 0x47
-		0x102<2> 
-		if_geq 0x228
-			goto 0xC6
-		endif 
-		break 
-	case 0x4F
-		0x102<2> 
-		if_geq 0x228
-			goto 0xC6
-		endif 
-		break 
-	case 0x4E
-		0x102<2> 
-		if_geq 0x228
-			goto 0xC6
-		endif 
-		break 
-	case 0x4D
-		0x102<2> 
-		if_geq 0x228
-			goto 0xC6
-		endif 
-		break 
-	case 0x46
-		0x102<2> 
-		if_geq 0x228
-			goto 0xC6
-		endif 
-		break 
-	case 0x4A
-		0x102<2> 
-		if_geq 0x258
-			goto 0xC6
-		endif 
-		break 
-	case 0x50
-		0x102<2> 
-		if_geq 0x258
-			goto 0xC6
-		endif 
-		break 
-	case 0x45
-		0x102<2> 
-		if_geq 0x228
-			goto 0xC6
-		endif 
-		break 
-	case 0x4C
-		0x102<2> 
-		if_geq 0x288
-			goto 0xC6
-		endif 
-		break 
-	case 0x4B
-		0x102<2> 
-		if_geq 0x258
-			goto 0xC6
-		endif 
-		break 
-	case 0x48
-		0x102<2> 
-		if_geq 0x2B8
-			goto 0xC6
-		endif 
-		break 
-	case 0x2C
-		0x102<2> 
-		if_geq 0x2E8
-			goto 0xC6
-		endif 
-		break 
-	case 0x37
-		0x102<2> 
-		if_geq 0x2E8
-			goto 0xC6
-		endif 
-		break 
-	case 0x35
-		0x102<2> 
-		if_geq 0x378
-			goto 0xC6
-		endif 
-		break 
-	case 0x38
-		0x102<2> 
-		if_geq 0x2E8
-			goto 0xC6
-		endif 
-		break 
-	case 0x2A
-		0x102<2> 
-		if_geq 0x318
-			goto 0xC6
-		endif 
-		break 
-	case 0x29
-		0x102<2> 
-		if_geq 0x258
-			goto 0xC6
-		endif 
-		break 
-	case 0x2D
-		0x102<2> 
-		if_geq 0x348
-			goto 0xC6
-		endif 
-		break 
-	case 0x33
-		0x102<2> 
-		if_geq 0x258
-			goto 0xC6
-		endif 
-		break 
-	case 0x31
-		0x102<2> 
-		if_geq 0x2E8
-			goto 0xC6
-		endif 
-		break 
-	case 0x32
-		0x102<2> 
-		if_geq 0x2E8
-			goto 0xC6
-		endif 
-		break 
-	case 0x34
-		0x102<2> 
-		if_geq 0x3A8
-			goto 0xC6
-		endif 
-		break 
-	case 0x2E
-		0x102<2> 
-		if_geq 0x288
-			goto 0xC6
-		endif 
-		break 
-	case 0x2B
-		0x102<2> 
-		if_geq 0x2B8
-			goto 0xC6
-		endif 
-		break 
-	case 0x2F
-		0x102<2> 
-		if_geq 0x348
-			goto 0xC6
-		endif 
-		break 
-	case 0x36
-		0x102<2> 
-		if_geq 0x2E8
-			goto 0xC6
-		endif 
-		break 
-	case 0x41
-		0x102<2> 
-		if_geq 0x228
-			goto 0xC6
-		endif 
-		break 
-	case 0x40
-		0x102<2> 
-		if_geq 0x228
-			goto 0xC6
-		endif 
-		break 
-	case 0x49
-		0x102<2> 
-		if_geq 0x228
-			goto 0xC6
-		endif 
-		break 
-	case 0x30
-		0x102<2> 
-		if_geq 0x228
-			goto 0xC6
-		endif 
-		break 
-	case 0xFF
-		0x102<2> 
-		if_geq 0x2B8
-			goto 0xC6
-		endif 
-		break 
-	default 
-		0x102<2> 
-		if_geq 0x240
-			goto 0xC6
-		endif 
-		break 
-endswitch
-goto 0xC7
-label 0xC6
-0xA7<3> 
-if 0
-	0xA6<1> 0
-endif 
-label 0xC5
-debug "TICKFLOW >>> 0000\n"
-0x7C 7, 1, 0
-debug "TICKFLOW >>> 0001\n"
-0x100<1> 
-rest 0x18
-debug "TICKFLOW >>> 0002\n"
-0xA5 0
-0x81 
-if 1
-	0x8C<1> 1
-endif 
-debug ""
-stop
-
-// Unloads all the graphics/sounds at the end of the game.
-unload:
-0x5F<1>
-0x62<1>
-0x35<2> 2
-if 1
-    remove_cellanim 2
-endif 
-0x35<2> 3
-if 1
-    remove_cellanim 3
-endif 
-0x35<2> 4
-if 1
-    remove_cellanim 4
-endif 
-0x35<2> 5
-if 1
-    remove_cellanim 5
-endif 
-0x35<2> 6
-if 1
-    remove_cellanim 6
-endif 
-0x35<2> 7
-if 1
-    remove_cellanim 7
-endif 
-0x35<2> 8
-if 1
-    remove_cellanim 8
-endif 
-0x35<2> 9
-if 1
-    remove_cellanim 9
-endif 
-0x35<2> 0xA
-if 1
-    remove_cellanim 0xA
-endif 
-0x35<2> 0xB
-if 1
-    remove_cellanim 0xB
-endif 
-0x35<2> 0xC
-if 1
-    remove_cellanim 0xC
-endif 
-0x35<2> 0xD
-if 1
-    remove_cellanim 0xD
-endif 
-0x35<2> 0xE
-if 1
-    remove_cellanim 0xE
-endif 
-rest 3
-0x3E<2> 4
-if 1
-    remove_layout 4
-endif 
-0x3E<2> 5
-if 1
-    remove_layout 5
-endif 
-0x3E<2> 6
-if 1
-    remove_layout 6
-endif 
-0x3E<2> 7
-if 1
-    remove_layout 7
-endif 
-0x3E<2> 8
-if 1
-    remove_layout 8
-endif 
-0x3E<2> 9
-if 1
-    remove_layout 9
-endif 
-0x3E<2> 0xA
-if 1
-    remove_layout 0xA
-endif 
-0x3E<2> 0xB
-if 1
-    remove_layout 0xB
-endif 
-0x3E<2> 0xC
-if 1
-    remove_layout 0xC
-endif 
-0x3E<2> 0xD
-if 1
-    remove_layout 0xD
-endif 
-0x3E<2> 0xE
-if 1
-    remove_layout 0xE
-endif 
-0x3E<2> 0xF
-if 1
-    remove_layout 0xF
-endif 
-0x3E<2> 0x10
-if 1
-    remove_layout 0x10
-endif 
-rest 3
-0x39<2> 2
-if 1
-    remove_effect 2
-endif 
-0x39<2> 3
-if 1
-    remove_effect 3
-endif 
-0x39<2> 4
-if 1
-    remove_effect 4
-endif 
-0x39<2> 5
-if 1
-    remove_effect 5
-endif 
-0x39<2> 6
-if 1
-    remove_effect 6
-endif 
-0x39<2> 7
-if 1
-    remove_effect 7
-endif 
-0x39<2> 8
-if 1
-    remove_effect 8
-endif 
-0x39<2> 9
-if 1
-    remove_effect 9
-endif 
-0x39<2> 0xA
-if 1
-    remove_effect 0xA
-endif 
-0x39<2> 0xB
-if 1
-    remove_effect 0xB
-endif 
-0x39<2> 0xC
-if 1
-    remove_effect 0xC
-endif 
-0x39<2> 0xD
-if 1
-    remove_effect 0xD
-endif 
-0x39<2> 0xE
-if 1
-    remove_effect 0xE
-endif 
-has_model 0
-if 1
-	remove_model 0
-endif
-has_model 1
-if 1
-	remove_model 1
-endif
-has_model 2
-if 1
-	remove_model 2
-endif
-has_model 3
-if 1
-	remove_model 3
-endif
-has_model 4
-if 1
-	remove_model 4
-endif
-has_model 5
-if 1
-	remove_model 5
-endif
-return 
+	0x8F 3
+	// If your game needs it, pre-transition setup goes here, before the fade command.
+	rest 0x18
+	fade<1> 1, 1, 1
+	input 1
+	// Your game sequence goes here.
+	stop

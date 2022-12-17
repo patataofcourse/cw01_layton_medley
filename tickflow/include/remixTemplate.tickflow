@@ -1,0 +1,590 @@
+// WARNING: a lot of this is copied straight from the template, so it may not follow the format spec
+
+// function tempoAndMusic
+tempoAndMusic:
+	rest 0x30
+	0x4F LAYTON_tempo
+	0x23 LAYTON_tempo
+	speed 0x100
+	rest 0x30
+	0xBA 
+	sub 1
+	0x88 
+	if 1
+		0x88<5> 
+	endif 
+	// 0x51 1 plays the loaded aac.
+	0x51 1
+	// Be sure to change this 0x10000C7 to whatever your new tempo file is, if it is different.
+	0x63 LAYTON_tempo
+	return 
+
+//
+// functions below here are probably very annoying and huge and i dont think i will touch them
+//
+
+//function changeEngine
+changeEngine:
+	0xAB<3> 1
+	if 1
+		0xAC<3> 
+		if 1
+			0xAC<4> 
+			if 1
+				stop 
+			endif 
+		endif 
+	endif 
+	0x89<6> 
+	if 1
+		0x8A<7> 
+		if 1
+			stop 
+		endif 
+	endif 
+	// The following async_subs disable pausing and a couple other things for 1.0 beats. This is likely to prevent disruption of transition.
+	async_sub 0x12
+	async_sub 0x17
+	async_sub 0x1C
+	input 0
+	fade 1, 1, 1
+	return 
+
+// Unloads all the graphics/sounds at the end of the game.
+
+// function unload
+unload:
+    0x5F<1>
+    0x62<1>
+    0x35<2> 2
+    if 1
+        remove_cellanim 2
+    endif 
+    0x35<2> 3
+    if 1
+        remove_cellanim 3
+    endif 
+    0x35<2> 4
+    if 1
+        remove_cellanim 4
+    endif 
+    0x35<2> 5
+    if 1
+        remove_cellanim 5
+    endif 
+    0x35<2> 6
+    if 1
+        remove_cellanim 6
+    endif 
+    0x35<2> 7
+    if 1
+        remove_cellanim 7
+    endif 
+    0x35<2> 8
+    if 1
+        remove_cellanim 8
+    endif 
+    0x35<2> 9
+    if 1
+        remove_cellanim 9
+    endif 
+    0x35<2> 0xA
+    if 1
+        remove_cellanim 0xA
+    endif 
+    0x35<2> 0xB
+    if 1
+        remove_cellanim 0xB
+    endif 
+    0x35<2> 0xC
+    if 1
+        remove_cellanim 0xC
+    endif 
+    0x35<2> 0xD
+    if 1
+        remove_cellanim 0xD
+    endif 
+    0x35<2> 0xE
+    if 1
+        remove_cellanim 0xE
+    endif 
+    rest 3
+    0x3E<2> 4
+    if 1
+        remove_layout 4
+    endif 
+    0x3E<2> 5
+    if 1
+        remove_layout 5
+    endif 
+    0x3E<2> 6
+    if 1
+        remove_layout 6
+    endif 
+    0x3E<2> 7
+    if 1
+        remove_layout 7
+    endif 
+    0x3E<2> 8
+    if 1
+        remove_layout 8
+    endif 
+    0x3E<2> 9
+    if 1
+        remove_layout 9
+    endif 
+    0x3E<2> 0xA
+    if 1
+        remove_layout 0xA
+    endif 
+    0x3E<2> 0xB
+    if 1
+        remove_layout 0xB
+    endif 
+    0x3E<2> 0xC
+    if 1
+        remove_layout 0xC
+    endif 
+    0x3E<2> 0xD
+    if 1
+        remove_layout 0xD
+    endif 
+    0x3E<2> 0xE
+    if 1
+        remove_layout 0xE
+    endif 
+    0x3E<2> 0xF
+    if 1
+        remove_layout 0xF
+    endif 
+    0x3E<2> 0x10
+    if 1
+        remove_layout 0x10
+    endif 
+    rest 3
+    0x39<2> 2
+    if 1
+        remove_effect 2
+    endif 
+    0x39<2> 3
+    if 1
+        remove_effect 3
+    endif 
+    0x39<2> 4
+    if 1
+        remove_effect 4
+    endif 
+    0x39<2> 5
+    if 1
+        remove_effect 5
+    endif 
+    0x39<2> 6
+    if 1
+        remove_effect 6
+    endif 
+    0x39<2> 7
+    if 1
+        remove_effect 7
+    endif 
+    0x39<2> 8
+    if 1
+        remove_effect 8
+    endif 
+    0x39<2> 9
+    if 1
+        remove_effect 9
+    endif 
+    0x39<2> 0xA
+    if 1
+        remove_effect 0xA
+    endif 
+    0x39<2> 0xB
+    if 1
+        remove_effect 0xB
+    endif 
+    0x39<2> 0xC
+    if 1
+        remove_effect 0xC
+    endif 
+    0x39<2> 0xD
+    if 1
+        remove_effect 0xD
+    endif 
+    0x39<2> 0xE
+    if 1
+        remove_effect 0xE
+    endif 
+    has_model 0
+    if 1
+        remove_model 0
+    endif
+    has_model 1
+    if 1
+        remove_model 1
+    endif
+    has_model 2
+    if 1
+        remove_model 2
+    endif
+    has_model 3
+    if 1
+        remove_model 3
+    endif
+    has_model 4
+    if 1
+        remove_model 4
+    endif
+    has_model 5
+    if 1
+        remove_model 5
+    endif
+    return
+
+// async function prologue
+prologue:
+    set_cat 0
+    0x21 120
+    speed 0x100
+    0x7C<3> 1
+    if 0
+        0x7C 1, 0, 0x18
+    endif 
+    0x7C<3> 2
+    if 0
+        0x7C 2, 0, 0x18
+    endif 
+    rest 0xC
+    engine 0x49
+    rest 0x18
+    sub 4
+    0x81 
+    if 1
+        0x84<1> 
+        label 0x300
+        rest 0xC
+        0x81 
+        if 1
+            0x84<2> 0
+            if 0
+                goto 0x300
+            endif 
+        endif 
+    endif 
+    0xA4<2> 0
+    rest 0x18
+    0x81 
+    if 1
+        0x82 0x3E8
+        rest 0xC
+        label 0x3DB
+        0x81 
+        if 1
+            0x82<1> 
+            if 0
+                rest 1
+                goto 0x3DB
+            endif 
+        endif 
+        rest_reset 
+    endif 
+    label 0xC8
+    0x103 
+    if 0
+        rest 6
+        goto 0xC8
+    endif 
+    0x7C<1> 7, 1, 0
+    fade<1> 7, 1, 0
+    0x76 7, 0
+    0x100 
+    rest 0x18
+    0x88 
+    if 0
+        0xAB<4> 
+        if 1
+            0xAB<1> 
+        endif 
+    endif 
+    0x102 
+    label 0xC7
+    0xA7 
+    if 1
+        goto 0xC5
+    endif 
+    rest 0x18
+    0x102<1> 0x18
+    0x101 
+    switch 
+        case 0x3E
+            0x102<2> 
+            if_geq 0x2B8
+                goto 0xC6
+            endif 
+            break 
+        case 0x3D
+            0x102<2> 
+            if_geq 0x228
+                goto 0xC6
+            endif 
+            break 
+        case 0x42
+            0x102<2> 
+            if_geq 0x258
+                goto 0xC6
+            endif 
+            break 
+        case 0x43
+            0x102<2> 
+            if_geq 0x1F8
+                goto 0xC6
+            endif 
+            break 
+        case 0x39
+            0x102<2> 
+            if_geq 0x1C8
+                goto 0xC6
+            endif 
+            break 
+        case 0x44
+            0x102<2> 
+            if_geq 0x288
+                goto 0xC6
+            endif 
+            break 
+        case 0x3F
+            0x102<2> 
+            if_geq 0x228
+                goto 0xC6
+            endif 
+            break 
+        case 0x3C
+            0x102<2> 
+            if_geq 0x228
+                goto 0xC6
+            endif 
+            break 
+        case 0x3A
+            0x102<2> 
+            if_geq 0x258
+                goto 0xC6
+            endif 
+            break 
+        case 0x3B
+            0x102<2> 
+            if_geq 0x258
+                goto 0xC6
+            endif 
+            break 
+        case 0x47
+            0x102<2> 
+            if_geq 0x228
+                goto 0xC6
+            endif 
+            break 
+        case 0x4F
+            0x102<2> 
+            if_geq 0x228
+                goto 0xC6
+            endif 
+            break 
+        case 0x4E
+            0x102<2> 
+            if_geq 0x228
+                goto 0xC6
+            endif 
+            break 
+        case 0x4D
+            0x102<2> 
+            if_geq 0x228
+                goto 0xC6
+            endif 
+            break 
+        case 0x46
+            0x102<2> 
+            if_geq 0x228
+                goto 0xC6
+            endif 
+            break 
+        case 0x4A
+            0x102<2> 
+            if_geq 0x258
+                goto 0xC6
+            endif 
+            break 
+        case 0x50
+            0x102<2> 
+            if_geq 0x258
+                goto 0xC6
+            endif 
+            break 
+        case 0x45
+            0x102<2> 
+            if_geq 0x228
+                goto 0xC6
+            endif 
+            break 
+        case 0x4C
+            0x102<2> 
+            if_geq 0x288
+                goto 0xC6
+            endif 
+            break 
+        case 0x4B
+            0x102<2> 
+            if_geq 0x258
+                goto 0xC6
+            endif 
+            break 
+        case 0x48
+            0x102<2> 
+            if_geq 0x2B8
+                goto 0xC6
+            endif 
+            break 
+        case 0x2C
+            0x102<2> 
+            if_geq 0x2E8
+                goto 0xC6
+            endif 
+            break 
+        case 0x37
+            0x102<2> 
+            if_geq 0x2E8
+                goto 0xC6
+            endif 
+            break 
+        case 0x35
+            0x102<2> 
+            if_geq 0x378
+                goto 0xC6
+            endif 
+            break 
+        case 0x38
+            0x102<2> 
+            if_geq 0x2E8
+                goto 0xC6
+            endif 
+            break 
+        case 0x2A
+            0x102<2> 
+            if_geq 0x318
+                goto 0xC6
+            endif 
+            break 
+        case 0x29
+            0x102<2> 
+            if_geq 0x258
+                goto 0xC6
+            endif 
+            break 
+        case 0x2D
+            0x102<2> 
+            if_geq 0x348
+                goto 0xC6
+            endif 
+            break 
+        case 0x33
+            0x102<2> 
+            if_geq 0x258
+                goto 0xC6
+            endif 
+            break 
+        case 0x31
+            0x102<2> 
+            if_geq 0x2E8
+                goto 0xC6
+            endif 
+            break 
+        case 0x32
+            0x102<2> 
+            if_geq 0x2E8
+                goto 0xC6
+            endif 
+            break 
+        case 0x34
+            0x102<2> 
+            if_geq 0x3A8
+                goto 0xC6
+            endif 
+            break 
+        case 0x2E
+            0x102<2> 
+            if_geq 0x288
+                goto 0xC6
+            endif 
+            break 
+        case 0x2B
+            0x102<2> 
+            if_geq 0x2B8
+                goto 0xC6
+            endif 
+            break 
+        case 0x2F
+            0x102<2> 
+            if_geq 0x348
+                goto 0xC6
+            endif 
+            break 
+        case 0x36
+            0x102<2> 
+            if_geq 0x2E8
+                goto 0xC6
+            endif 
+            break 
+        case 0x41
+            0x102<2> 
+            if_geq 0x228
+                goto 0xC6
+            endif 
+            break 
+        case 0x40
+            0x102<2> 
+            if_geq 0x228
+                goto 0xC6
+            endif 
+            break 
+        case 0x49
+            0x102<2> 
+            if_geq 0x228
+                goto 0xC6
+            endif 
+            break 
+        case 0x30
+            0x102<2> 
+            if_geq 0x228
+                goto 0xC6
+            endif 
+            break 
+        case 0xFF
+            0x102<2> 
+            if_geq 0x2B8
+                goto 0xC6
+            endif 
+            break 
+        default 
+            0x102<2> 
+            if_geq 0x240
+                goto 0xC6
+            endif 
+            break 
+    endswitch
+    goto 0xC7
+    label 0xC6
+    0xA7<3> 
+    if 0
+        0xA6<1> 0
+    endif 
+    label 0xC5
+    debug "TICKFLOW >>> 0000\n"
+    0x7C 7, 1, 0
+    debug "TICKFLOW >>> 0001\n"
+    0x100<1> 
+    rest 0x18
+    debug "TICKFLOW >>> 0002\n"
+    0xA5 0
+    0x81 
+    if 1
+        0x8C<1> 1
+    endif 
+    debug "TICKFLOW >>> 0003"
+    stop
