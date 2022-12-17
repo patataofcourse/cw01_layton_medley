@@ -1,4 +1,7 @@
-// uses: constants.tickflow
+// village.tickflow
+//   Everything related to the Curious Village section(s)
+
+// i would add includes here if tickompiler managed recursiveness in directives
 
 // function village_load
 village_load:
