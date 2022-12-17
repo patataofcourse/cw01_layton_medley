@@ -1,6 +1,7 @@
 this project follows an informal format specification for Tickflow, which is loosely described here:
 - all commands must be indented by one level
 - use loc labels rather than the label command for gotos
+    - for loops or other particularly crash-prone situations, use normal labels but annotate them and the gotos with a comment indicating what their name would be
 - loops are indented after the initial label, and get unindented for the break label
 - if a label is meant to be callable as a function ("sub", precede it with a comment saying "function [NAME]")
 - all custom-made includables must have a prefix in all their members (including those that aren't meant to be used by outsiders)

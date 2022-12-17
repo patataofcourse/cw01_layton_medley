@@ -6,36 +6,36 @@ village_load:
 
     // tangotronic
     set_cellanim 2, u"rom:/cellanim/ctrTango_long.zlib", -1
-    village_loop1:
+    label 0x1000 //village_loop1:
         cellanim_busy 2
         if false
-            goto village_break1
+            goto 0x1001 //village_break1
         endif 
         rest 1
-        goto village_loop1
-    village_break1:
+        goto 0x1000
+    label 0x1001 //village_break1:
 
     // screwbot factory
     set_cellanim 3, u"rom:/cellanim/rvlRobot_v0.zlib", -1
-    village_loop2:
+    label 0x1010 //village_loop1:
         cellanim_busy 3
         if false
-            goto village_break2
+            goto 0x1011 //village_break2
         endif 
         rest 1
-        goto village_loop2
-    village_break2:
+        goto 0x1010 //village_loop2
+    label 0x1011 //village_break2:
 
     // working dough
     set_cellanim 4, u"rom:/cellanim/rvlManju_long.zlib", -1
-    village_loop3:
+    label 0x1020 //village_loop3:
         cellanim_busy 4
         if false
-            goto village_break3
+            goto 0x1021 //village_break3
         endif 
         rest 1
-        goto village_loop3
-    village_break3:
+        goto 0x1020 //village_loop3
+    label 0x1021 //village_break3:
 
     // ---- layouts ----
     // (none)
@@ -44,30 +44,35 @@ village_load:
 
     // tangotronic
     set_effect 5, u"rom:/effect/ctrTango.zlib", -1
-    village_loop4:
+    label 0x1030 //village_loop4:
         effect_busy 5
         if false
-            goto village_break4
+            goto 0x1031 //village_break4
             endif
         rest 1
-        goto village_loop4
-    village_break4:
+        goto 0x1030 //village_loop4
+    label 0x1031 //village_break4:
 
     // ---- models ----
 
     // tangotronic
-    has_model 1
-    if false
-        set_model 1, u"rom:/model/ctrTango.zlib", 1
-    endif 
-    village_loop5:
+    set_model 1, u"rom:/model/ctrTango_long.zlib", 1
+    set_model 4, u"rom:/__test/DefaultFragmentLight.bcenv", 1
+    set_model 5, u"rom:/__test/DefaultSceneEnvironmentSetting.bcenv", 1
+    label 0x1040 //village_loop5:
         has_model 1
-        if true
-            goto village_break5
+        if true // i hate that we can't have ands
+            has_model 4
+            if true
+                has_model 5
+                if true
+                    goto 0x1041 //village_break5
+                endif
+            endif
         endif 
         rest 1
-        goto village_loop5
-    village_break5:
+        goto 0x1040 //village_loop5
+    label 0x1041 //village_break5:
 
     // random ass block of code
     0x83<1>
@@ -84,11 +89,11 @@ village_load:
     rest 0xC
 
     // sfx
-    set_sfx 1, u"GROUP_CTR_TANGO"
+    set_sfx 1, u"GROUP_TANGO"
     rest 0xC
-    set_sfx 2, u"GROUP_RVL_ROBOT"
+    set_sfx 2, u"GROUP_ROBOT_KOJO"
     rest 0xC
-    set_sfx 3, u"GROUP_RVL_MANJU"
+    set_sfx 3, u"GROUP_MANJU"
     rest 0xC
     sub 3
     0x83 0

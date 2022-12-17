@@ -124,6 +124,7 @@ engine SCENE_ctrTango
 sub 4
 0x29<2> 
 call tempoAndMusic
+0x10C 0, -0x320, 0x5DC
 async_call startingGame
 rest 0xC0
 rest 0xC0
