@@ -1,8 +1,7 @@
 #index 0x59
 
-#include "include/constants.tickflow"
-
-#include "game/village.tickflow"
+#include include/constants.tickflow
+#include games/village.tickflow
 
 start:
 
@@ -121,7 +120,7 @@ input 0
 // See this for information about changing the engine/scene: https://pastebin.com/nJnyjuHe
 
 call changeEngine
-engine 0
+engine SCENE_ctrTango
 sub 4
 0x29<2> 
 call tempoAndMusic
@@ -132,7 +131,7 @@ rest 0xC0
 rest 0xA8
 
 call changeEngine
-engine 0x16
+engine SCENE_rvlRobot
 sub 4
 0x29<2> 
 async_call subNameHere
@@ -143,23 +142,11 @@ rest 0xC0
 rest 0xA8
 
 call changeEngine
-engine 0x25
+engine SCENE_rvlManju
 sub 4
 0x29<2> 
 async_call subNameHere2
 rest 0x18
-rest 0xC0
-rest 0xC0
-rest 0xC0
-rest 0xA8
-
-call changeEngine
-engine 0x3C
-sub 4
-0x29<2> 
-async_call subNameHere3
-rest 0x18
-//async_call loadGAMENAME
 rest 0xC0
 rest 0xC0
 rest 0xC0

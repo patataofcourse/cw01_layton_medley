@@ -1,4 +1,4 @@
-#include "include/constants.tickflow"
+// uses: constants.tickflow
 
 // function village_load
 village_load:
@@ -58,7 +58,7 @@ village_load:
     // tangotronic
     has_model 1
     if false
-        set_model 1, u"rom:/model/[FILENAME].zlib", 1
+        set_model 1, u"rom:/model/ctrTango.zlib", 1
     endif 
     village_loop5:
         has_model 1
@@ -80,12 +80,29 @@ village_load:
     0x8C<2> 5
 
     // aac
+    0x61 0, u"remix_led_final"
+    rest 0xC
+
+    // sfx
+    set_sfx 1, u"GROUP_CTR_TANGO"
+    rest 0xC
+    set_sfx 2, u"GROUP_RVL_ROBOT"
+    rest 0xC
+    set_sfx 3, u"GROUP_RVL_MANJU"
+    rest 0xC
+    sub 3
+    0x83 0
 
     // finally, assign to the necessary scenes
+    game_cellanim SCENE_ctrTango, 2
+    game_effect SCENE_ctrTango, 5
+    game_model SCENE_ctrTango, 1
 
+    game_cellanim SCENE_rvlRobot, 3
+    
+    game_cellanim SCENE_rvlManju, 4
 
-    stop
+    return
 
 village_unload:
-
-stop
+    stop
