@@ -1,3 +1,6 @@
 bin/
 planning/
 C00.bin
+*.msbt
+*.msbp
+*.zlib
