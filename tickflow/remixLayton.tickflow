@@ -162,31 +162,32 @@ start:
     sub 4
     0x29<2> 
     call tempoAndMusic
-    async_call cowbellTest
     async_call village_tango00
+
     rest 0xC0
     rest 0xC0
     rest 0xC0
-    rest 0xA8
+    rest 0xC0
+    rest 0x18
 
     call changeEngine
     engine SCENE_rvlRobot
     sub 4
-    0x29<2> 
-    async_call subNameHere
+    0x29<2>
+    async_call village_robot01
     rest 0x18
-    rest 0xC0
-    rest 0xC0
-    rest 0xC0
-    rest 0xA8
+
+    rest 0x90
+    rest 0x60
 
     call changeEngine
-    engine SCENE_rvlManju
+    engine SCENE_ctrTango
     sub 4
     0x29<2> 
-    async_call subNameHere2
+    async_call village_tango02
     rest 0x18
-    rest 0xC0
+
+    rest 0x30
     rest 0xC0
     rest 0xC0
     rest 0xA8
@@ -323,27 +324,6 @@ loadGAMENAME:
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------------
-
-// This is the starting game. It has a slower fade-in than the other example subs, but that's about it.
-// You may rename "startingGame" to whatever you want. If you rename it, make sure you call it by its new name in the main sequence, otherwise Tickompiler will crash when compiling.
-startingGame:
-    0x8F 3
-    // If your game needs it, game setup that shouldn't be seen by the player goes here, before the fade command.
-    fade<1> 7, 1, 0x30
-    rest 0x60
-    input 1
-    stop
-
-
-// Rename subNameHere to whatever you want.
-subNameHere:
-    0x8F 3
-    // If your game needs it, pre-transition setup goes here, before the fade command.
-    rest 0x18
-    fade<1> 1, 1, 1
-    input 1
-    // Your game sequence goes here.
-    stop 
 
 subNameHere2:
     0x8F 3

@@ -4,3 +4,11 @@ cowbellTest:
         play_sfx 0x1000291
         rest 0x30
     goto 0x999
+
+// async function doubleCowbellTest
+doubleCowbellTest:
+    label 0x998
+        play_sfx 0x1000291
+        rest 0x18
+        play_sfx 0x1000284
+    goto 0x998
