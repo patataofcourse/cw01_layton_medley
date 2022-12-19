@@ -13,9 +13,9 @@ tempoAndMusic:
 	if 1
 		0x88<5> 
 	endif 
+    rest 0x60
 	// 0x51 1 plays the loaded aac.
 	0x51 1
-	// Be sure to change this 0x10000C7 to whatever your new tempo file is, if it is different.
 	0x63 LAYTON_tempo
 	return 
 

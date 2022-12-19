@@ -88,7 +88,7 @@ village_load:
     0x8C<2> 5
 
     // aac
-    0x61 0, u"remix_led_final"
+    0x61 0, u"Layton_Medley_Part4"
     rest 0xC
 
     // sfx

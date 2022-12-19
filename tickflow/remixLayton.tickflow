@@ -4,7 +4,8 @@
 //     .
 //     ├── include
 //     │   ├── constants.tickflow
-//     │   └── remixTemplate.tickflow
+//     │   ├── remixTemplate.tickflow
+//     │   └── test.tickflow (include commented out in the final game)
 //     └── games
 //         └── village.tickflow
 //
@@ -12,7 +13,7 @@
 //     a. include source or a link to my release
 //     b. if you include source and change the names of any includables, modify the directory tree above
 //
-//   funny top hat man
+// funny top hat man
 
 // -------------
 // --- SETUP ---
@@ -21,10 +22,10 @@
 // changing these should be enough to move everything (index, tempo, prologue, epilogue)
 #index 0x59
 LAYTON_index = 0x59
-LAYTON_tempo = 0x10000C7
+LAYTON_tempo = 0x01000068
 
 
-#assets 0xDEADBEEF // the assets sub is a social construct
+#assets 0xFFFFFF00 // the assets sub is a social construct
 
 // ----------------
 // --- INCLUDES ---
@@ -35,6 +36,7 @@ LAYTON_tempo = 0x10000C7
 
 // Reference files such as stuff extracted from the original Remix Template 
 #include include/remixTemplate.tickflow
+#include include/test.tickflow
 
 // Subdivisions of the main tickflow, one per section
 #include games/village.tickflow
@@ -160,6 +162,7 @@ start:
     sub 4
     0x29<2> 
     call tempoAndMusic
+    async_call cowbellTest
     async_call startingGame
     rest 0xC0
     rest 0xC0
