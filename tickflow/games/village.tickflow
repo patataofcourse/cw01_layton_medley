@@ -120,6 +120,7 @@ village_tango00:
     0x8F 3
     0x10C 0, -0x320, 0x5DC
     0x10D<1> 
+    
     fade<1> 7, 1, 0x60
     rest 0xC0
     input 1
@@ -168,6 +169,62 @@ village_tango02:
     async_sub 0x5C
 
     stop
+
+
+// async function village_robot01
+village_robot03:
+    0x8F 3
+    0x102 0
+    rest 0x18
+    fade<1> 1, 1, 1
+    input 1
+    
+    async_sub 0x5A
+    async_call robot_whiteNoCrane
+
+    stop
+
+village_tango04:
+    0x8F 3
+
+    0x10C 0, -0x320, 0x5DC
+    0x10D<1>
+    async_sub 0x68
+
+    rest 0x20
+    fade<1> 1, 1, 1
+    input 1
+
+    rest 0x90
+    rest 0x78
+    async_sub 0x57
+
+    stop
+
+village_robot05:
+    0x8F 3
+    rest 0x18
+    fade<1> 1, 1, 1
+    input 1
+
+    async_sub 0x5A
+    async_sub 0x58
+
+    rest 0xC0
+    rest 0xC0
+
+    async_sub 0x5A
+    async_sub 0x58
+
+    stop
+
+village_dough06:
+    0x8F 3
+    rest 0x18
+    fade<1> 1, 1, 1
+    input 1
+
+stop
 
 // ### MODIFIED SUBS ###
 

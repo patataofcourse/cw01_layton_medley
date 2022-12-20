@@ -187,9 +187,54 @@ start:
     async_call village_tango02
     rest 0x18
 
+    rest 0x48
+    rest 0xC0
+    rest 0x78
+    
+    call changeEngine
+    engine SCENE_rvlRobot
+    sub 4
+    0x29<2> 
+    async_call village_robot03
+    rest 0x18
+
     rest 0x30
     rest 0xC0
+    rest 0x10
+
+    call changeEngine
+    engine SCENE_ctrTango
+    sub 4
+    0x29<2> 
+    async_call village_tango04
+    rest 0x20
+
+    rest 0x90
     rest 0xC0
+    rest 0xA8
+
+    call changeEngine
+    engine SCENE_rvlRobot
+    sub 4
+    0x29<2> 
+    async_call village_robot05
+    rest 0x18
+
+    rest 0xC0
+    rest 0xC0
+    rest 0xC0
+    rest 0xA8
+
+    call changeEngine
+    engine SCENE_rvlManju
+    sub 4
+    0x29<2> 
+    async_call village_dough06
+    rest 0x18
+
+    rest 0xC0
+
+    call cowbell
     rest 0xA8
 
     // End the game, unload everything, and do results screen
