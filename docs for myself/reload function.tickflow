@@ -1,0 +1,61 @@
+
+// To replace game assets on the fly like in the medley remixes, use this sub template. You'll need to copy/paste this for multiple game asset swaps, also akin to the medley remixes.
+// See this for notes and info about this template: https://pastebin.com/SDRELgnz
+loadGAMENAME:
+    remove_cellanim 2
+    label 0x4D2
+    cellanim_busy 2
+    if 0
+        goto 0x10E1
+    endif 
+    rest 1
+    goto 0x4D2
+    label 0x10E1
+    set_cellanim 2, u"rom:/cellanim/[FILENAME].zlib", -1
+    rest 0xC
+
+    //remove_effect Y
+    //label 0x458
+    //effect_busy Y
+    //if 0
+    //	goto 0x83F
+    //endif 
+    //rest 1
+    //goto 0x458
+    //label 0x83F
+    //set_effect Y, u"rom:/effect/[FILENAME].zlib", -1
+    //rest 0xC
+
+    //remove_layout Z
+    //label 0x458
+    //layout_busy Z
+    //if 0
+    //	goto 0x83F
+    //endif 
+    //rest 1
+    //goto 0x458
+    //label 0x83F
+    //set_layout Z, u"rom:/layout/[FILENAME].zlib", -1
+    //rest 0xC
+
+    //has_model M
+    //if 1
+    //	remove_model M
+    //endif 
+    //rest 0xC
+    //has_model M
+    //if 0
+    //	set_model M, u"rom:/model/[FILENAME].zlib", 1
+    //endif 
+
+    remove_sfx 1
+    rest 0xC
+    sub 3
+    set_sfx 1, u"[GROUP_FILENAME]"
+    rest 0xC
+
+    game_cellanim 0, 2
+    //game_effect E, Y
+    //game_layout E, Z
+    //game_model E, M
+    stop 

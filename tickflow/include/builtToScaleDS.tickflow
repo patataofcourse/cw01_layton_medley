@@ -1,0 +1,1427 @@
+// More Versatile Built to Scale DS Subs
+// The widgets will now be spawned in a certain slot using only 1 sub, and not 4.
+// Use them if you want!
+
+
+// These subs below only spawn widgets in 1 slot, and not 4.
+
+// 2.0 beats, slots 1-4
+
+// async function slotA200
+slotA200:
+	0x103 0, 1
+	0x103<3> 0
+	0x103<1> 0, 1, -4
+	0x103<1> 0, 0, 4
+	rest 0x30	// 1.0 beats
+	0x103<1> 0, 1, -3
+	0x103<1> 0, 0, 3
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 0, 1, -2
+	0x103<1> 0, 0, 2
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 0, 1, -1
+	0x103<1> 0, 0, 1
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 0, 1, 0
+	0x103<1> 0, 0, 0
+	rest 0x30	// 1.0 beats
+	async_call charge
+	0x102 -1, 2, 0, 1, 0
+	0x103<2> 0
+	rest 0x30	// 1.0 beats
+	0x103<1> 0, 1, 1
+	0x103<1> 0, 0, -1
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 0, 1, 2
+	0x103<1> 0, 0, -2
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 0, 1, 3
+	0x103<1> 0, 0, -3
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 0, 1, 4
+	0x103<1> 0, 0, -4
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 0, 1, 5
+	0x103<1> 0, 0, -5
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 0, 1, 6
+	0x103<1> 0, 0, -6
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103 0, 0
+	stop
+
+// async function slotB200
+slotB200:
+	0x103 1, 1
+	0x103<3> 1
+	0x103<1> 1, 1, -4
+	0x103<1> 1, 0, 4
+	rest 0x30	// 1.0 beats
+	0x103<1> 1, 1, -3
+	0x103<1> 1, 0, 3
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 1, 1, -2
+	0x103<1> 1, 0, 2
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 1, 1, -1
+	0x103<1> 1, 0, 1
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 1, 1, 0
+	0x103<1> 1, 0, 0
+	rest 0x30	// 1.0 beats
+	async_call charge
+	0x102 -1, 2, 0, 1, 0
+	0x103<2> 1
+	rest 0x30	// 1.0 beats
+	0x103<1> 1, 1, 1
+	0x103<1> 1, 0, -1
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 1, 1, 2
+	0x103<1> 1, 0, -2
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 1, 1, 3
+	0x103<1> 1, 0, -3
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 1, 1, 4
+	0x103<1> 1, 0, -4
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 1, 1, 5
+	0x103<1> 1, 0, -5
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 1, 1, 6
+	0x103<1> 1, 0, -6
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103 1, 0
+	stop
+
+// async function slotC200
+slotC200:
+	0x103 2, 1
+	0x103<3> 2
+	0x103<1> 2, 1, -4
+	0x103<1> 2, 0, 4
+	rest 0x30	// 1.0 beats
+	0x103<1> 2, 1, -3
+	0x103<1> 2, 0, 3
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 2, 1, -2
+	0x103<1> 2, 0, 2
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 2, 1, -1
+	0x103<1> 2, 0, 1
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 2, 1, 0
+	0x103<1> 2, 0, 0
+	rest 0x30	// 1.0 beats
+	async_call charge
+	0x102 -1, 2, 0, 1, 0
+	0x103<2> 2
+	rest 0x30	// 1.0 beats
+	0x103<1> 2, 1, 1
+	0x103<1> 2, 0, -1
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 2, 1, 2
+	0x103<1> 2, 0, -2
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 2, 1, 3
+	0x103<1> 2, 0, -3
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 2, 1, 4
+	0x103<1> 2, 0, -4
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 2, 1, 5
+	0x103<1> 2, 0, -5
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 2, 1, 6
+	0x103<1> 2, 0, -6
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103 2, 0
+	stop
+
+// async function slotD200
+slotD200:
+	0x103 3, 1
+	0x103<3> 3
+	0x103<1> 3, 1, -4
+	0x103<1> 3, 0, 4
+	rest 0x30	// 1.0 beats
+	0x103<1> 3, 1, -3
+	0x103<1> 3, 0, 3
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 3, 1, -2
+	0x103<1> 3, 0, 2
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 3, 1, -1
+	0x103<1> 3, 0, 1
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 3, 1, 0
+	0x103<1> 3, 0, 0
+	rest 0x30	// 1.0 beats
+	async_call charge
+	0x102 -1, 2, 0, 1, 0
+	0x103<2> 3
+	rest 0x30	// 1.0 beats
+	0x103<1> 3, 1, 1
+	0x103<1> 3, 0, -1
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 3, 1, 2
+	0x103<1> 3, 0, -2
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 3, 1, 3
+	0x103<1> 3, 0, -3
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 3, 1, 4
+	0x103<1> 3, 0, -4
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 3, 1, 5
+	0x103<1> 3, 0, -5
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103<1> 3, 1, 6
+	0x103<1> 3, 0, -6
+	rest 0x30	// 1.0 beats
+	rest 0x30	// 1.0 beats
+	0x103 3, 0
+	stop
+
+
+// 1.0 beats, slots 1-4
+
+// async function slotA100
+slotA100:
+	0x103 0, 1
+	0x103<3> 0
+	0x103<1> 0, 1, -4
+	0x103<1> 0, 0, 4
+	rest 0x30	// 1.0 beats
+	0x103<1> 0, 1, -3
+	0x103<1> 0, 0, 3
+	rest 0x30	// 1.0 beats
+	0x103<1> 0, 1, -2
+	0x103<1> 0, 0, 2
+	rest 0x30	// 1.0 beats
+	0x103<1> 0, 1, -1
+	0x103<1> 0, 0, 1
+	rest 0x30	// 1.0 beats
+	async_call charge
+	0x102 -1, 2, 0, 1, 0
+	0x103<2> 0
+	0x103<1> 0, 1, 0
+	0x103<1> 0, 0, 0
+	rest 0x30	// 1.0 beats
+	0x103<1> 0, 1, 1
+	0x103<1> 0, 0, -1
+	rest 0x30	// 1.0 beats
+	0x103<1> 0, 1, 2
+	0x103<1> 0, 0, -2
+	rest 0x30	// 1.0 beats
+	0x103<1> 0, 1, 3
+	0x103<1> 0, 0, -3
+	rest 0x30	// 1.0 beats
+	0x103<1> 0, 1, 4
+	0x103<1> 0, 0, -4
+	rest 0x30	// 1.0 beats
+	0x103<1> 0, 1, 5
+	0x103<1> 0, 0, -5
+	rest 0x30	// 1.0 beats
+	0x103<1> 0, 1, 6
+	0x103<1> 0, 0, -6
+	rest 0x30	// 1.0 beats
+	0x103 0, 0
+	stop
+
+// async function slotB100
+slotB100:
+	0x103 1, 1
+	0x103<3> 1
+	0x103<1> 1, 1, -4
+	0x103<1> 1, 0, 4
+	rest 0x30	// 1.0 beats
+	0x103<1> 1, 1, -3
+	0x103<1> 1, 0, 3
+	rest 0x30	// 1.0 beats
+	0x103<1> 1, 1, -2
+	0x103<1> 1, 0, 2
+	rest 0x30	// 1.0 beats
+	0x103<1> 1, 1, -1
+	0x103<1> 1, 0, 1
+	rest 0x30	// 1.0 beats
+	async_call charge
+	0x102 -1, 2, 0, 1, 0
+	0x103<2> 1
+	0x103<1> 1, 1, 0
+	0x103<1> 1, 0, 0
+	rest 0x30	// 1.0 beats
+	0x103<1> 1, 1, 1
+	0x103<1> 1, 0, -1
+	rest 0x30	// 1.0 beats
+	0x103<1> 1, 1, 2
+	0x103<1> 1, 0, -2
+	rest 0x30	// 1.0 beats
+	0x103<1> 1, 1, 3
+	0x103<1> 1, 0, -3
+	rest 0x30	// 1.0 beats
+	0x103<1> 1, 1, 4
+	0x103<1> 1, 0, -4
+	rest 0x30	// 1.0 beats
+	0x103<1> 1, 1, 5
+	0x103<1> 1, 0, -5
+	rest 0x30	// 1.0 beats
+	0x103<1> 1, 1, 6
+	0x103<1> 1, 0, -6
+	rest 0x30	// 1.0 beats
+	0x103 1, 0
+	stop
+
+// async function slotC100
+slotC100:
+	0x103 2, 1
+	0x103<3> 2
+	0x103<1> 2, 1, -4
+	0x103<1> 2, 0, 4
+	rest 0x30	// 1.0 beats
+	0x103<1> 2, 1, -3
+	0x103<1> 2, 0, 3
+	rest 0x30	// 1.0 beats
+	0x103<1> 2, 1, -2
+	0x103<1> 2, 0, 2
+	rest 0x30	// 1.0 beats
+	0x103<1> 2, 1, -1
+	0x103<1> 2, 0, 1
+	rest 0x30	// 1.0 beats
+	async_call charge
+	0x102 -1, 2, 0, 1, 0
+	0x103<2> 2
+	0x103<1> 2, 1, 0
+	0x103<1> 2, 0, 0
+	rest 0x30	// 1.0 beats
+	0x103<1> 2, 1, 1
+	0x103<1> 2, 0, -1
+	rest 0x30	// 1.0 beats
+	0x103<1> 2, 1, 2
+	0x103<1> 2, 0, -2
+	rest 0x30	// 1.0 beats
+	0x103<1> 2, 1, 3
+	0x103<1> 2, 0, -3
+	rest 0x30	// 1.0 beats
+	0x103<1> 2, 1, 4
+	0x103<1> 2, 0, -4
+	rest 0x30	// 1.0 beats
+	0x103<1> 2, 1, 5
+	0x103<1> 2, 0, -5
+	rest 0x30	// 1.0 beats
+	0x103<1> 2, 1, 6
+	0x103<1> 2, 0, -6
+	rest 0x30	// 1.0 beats
+	0x103 2, 0
+	stop
+
+// async function slotD100
+slotD100:
+	0x103 3, 1
+	0x103<3> 3
+	0x103<1> 3, 1, -4
+	0x103<1> 3, 0, 4
+	rest 0x30	// 1.0 beats
+	0x103<1> 3, 1, -3
+	0x103<1> 3, 0, 3
+	rest 0x30	// 1.0 beats
+	0x103<1> 3, 1, -2
+	0x103<1> 3, 0, 2
+	rest 0x30	// 1.0 beats
+	0x103<1> 3, 1, -1
+	0x103<1> 3, 0, 1
+	rest 0x30	// 1.0 beats
+	async_call charge
+	0x102 -1, 2, 0, 1, 0
+	0x103<2> 3
+	0x103<1> 3, 1, 0
+	0x103<1> 3, 0, 0
+	rest 0x30	// 1.0 beats
+	0x103<1> 3, 1, 1
+	0x103<1> 3, 0, -1
+	rest 0x30	// 1.0 beats
+	0x103<1> 3, 1, 2
+	0x103<1> 3, 0, -2
+	rest 0x30	// 1.0 beats
+	0x103<1> 3, 1, 3
+	0x103<1> 3, 0, -3
+	rest 0x30	// 1.0 beats
+	0x103<1> 3, 1, 4
+	0x103<1> 3, 0, -4
+	rest 0x30	// 1.0 beats
+	0x103<1> 3, 1, 5
+	0x103<1> 3, 0, -5
+	rest 0x30	// 1.0 beats
+	0x103<1> 3, 1, 6
+	0x103<1> 3, 0, -6
+	rest 0x30	// 1.0 beats
+	0x103 3, 0
+	stop
+
+
+// 0.75 beats, slots 1-4
+
+// async function slotA75
+slotA75:
+	0x103 0, 1
+	0x103<3> 0
+	0x103<1> 0, 1, -4
+	0x103<1> 0, 0, 4
+	rest 0x30	// 1.0 beats
+	0x103<1> 0, 1, -3
+	0x103<1> 0, 0, 3
+	rest 0x24	// 0.75 beats
+	0x103<1> 0, 1, -2
+	0x103<1> 0, 0, 2
+	rest 0x24	// 0.75 beats
+	0x103<1> 0, 1, -1
+	0x103<1> 0, 0, 1
+	rest 0x18	// 0.5 beats
+	async_call charge
+	0x102 -1, 2, 0, 1, 0
+	0x103<2> 0
+	rest 0xC	// 0.25 beats
+	0x103<1> 0, 1, 0
+	0x103<1> 0, 0, 0
+	rest 0x24	// 0.75 beats
+	0x103<1> 0, 1, 1
+	0x103<1> 0, 0, -1
+	rest 0x24	// 0.75 beats
+	0x103<1> 0, 1, 2
+	0x103<1> 0, 0, -2
+	rest 0x24	// 0.75 beats
+	0x103<1> 0, 1, 3
+	0x103<1> 0, 0, -3
+	rest 0x24	// 0.75 beats
+	0x103<1> 0, 1, 4
+	0x103<1> 0, 0, -4
+	rest 0x24	// 0.75 beats
+	0x103<1> 0, 1, 5
+	0x103<1> 0, 0, -5
+	rest 0x24	// 0.75 beats
+	0x103<1> 0, 1, 6
+	0x103<1> 0, 0, -6
+	rest 0x24	// 0.75 beats
+	0x103 0, 0
+	stop
+
+// async function slotB75
+slotB75:
+	0x103 1, 1
+	0x103<3> 1
+	0x103<1> 1, 1, -4
+	0x103<1> 1, 0, 4
+	rest 0x30	// 1.0 beats
+	0x103<1> 1, 1, -3
+	0x103<1> 1, 0, 3
+	rest 0x24	// 0.75 beats
+	0x103<1> 1, 1, -2
+	0x103<1> 1, 0, 2
+	rest 0x24	// 0.75 beats
+	0x103<1> 1, 1, -1
+	0x103<1> 1, 0, 1
+	rest 0x18	// 0.5 beats
+	async_call charge
+	0x102 -1, 2, 0, 1, 0
+	0x103<2> 1
+	rest 0xC	// 0.25 beats
+	0x103<1> 1, 1, 0
+	0x103<1> 1, 0, 0
+	rest 0x24	// 0.75 beats
+	0x103<1> 1, 1, 1
+	0x103<1> 1, 0, -1
+	rest 0x24	// 0.75 beats
+	0x103<1> 1, 1, 2
+	0x103<1> 1, 0, -2
+	rest 0x24	// 0.75 beats
+	0x103<1> 1, 1, 3
+	0x103<1> 1, 0, -3
+	rest 0x24	// 0.75 beats
+	0x103<1> 1, 1, 4
+	0x103<1> 1, 0, -4
+	rest 0x24	// 0.75 beats
+	0x103<1> 1, 1, 5
+	0x103<1> 1, 0, -5
+	rest 0x24	// 0.75 beats
+	0x103<1> 1, 1, 6
+	0x103<1> 1, 0, -6
+	rest 0x24	// 0.75 beats
+	0x103 1, 0
+	stop
+
+// async function slotC75
+slotC75:
+	0x103 2, 1
+	0x103<3> 2
+	0x103<1> 2, 1, -4
+	0x103<1> 2, 0, 4
+	rest 0x30	// 1.0 beats
+	0x103<1> 2, 1, -3
+	0x103<1> 2, 0, 3
+	rest 0x24	// 0.75 beats
+	0x103<1> 2, 1, -2
+	0x103<1> 2, 0, 2
+	rest 0x24	// 0.75 beats
+	0x103<1> 2, 1, -1
+	0x103<1> 2, 0, 1
+	rest 0x18	// 0.5 beats
+	async_call charge
+	0x102 -1, 2, 0, 1, 0
+	0x103<2> 2
+	rest 0xC	// 0.25 beats
+	0x103<1> 2, 1, 0
+	0x103<1> 2, 0, 0
+	rest 0x24	// 0.75 beats
+	0x103<1> 2, 1, 1
+	0x103<1> 2, 0, -1
+	rest 0x24	// 0.75 beats
+	0x103<1> 2, 1, 2
+	0x103<1> 2, 0, -2
+	rest 0x24	// 0.75 beats
+	0x103<1> 2, 1, 3
+	0x103<1> 2, 0, -3
+	rest 0x24	// 0.75 beats
+	0x103<1> 2, 1, 4
+	0x103<1> 2, 0, -4
+	rest 0x24	// 0.75 beats
+	0x103<1> 2, 1, 5
+	0x103<1> 2, 0, -5
+	rest 0x24	// 0.75 beats
+	0x103<1> 2, 1, 6
+	0x103<1> 2, 0, -6
+	rest 0x24	// 0.75 beats
+	0x103 2, 0
+	stop
+
+// async function slotD75
+slotD75:
+	0x103 3, 1
+	0x103<3> 3
+	0x103<1> 3, 1, -4
+	0x103<1> 3, 0, 4
+	rest 0x30	// 1.0 beats
+	0x103<1> 3, 1, -3
+	0x103<1> 3, 0, 3
+	rest 0x24	// 0.75 beats
+	0x103<1> 3, 1, -2
+	0x103<1> 3, 0, 2
+	rest 0x24	// 0.75 beats
+	0x103<1> 3, 1, -1
+	0x103<1> 3, 0, 1
+	rest 0x18	// 0.5 beats
+	async_call charge
+	0x102 -1, 2, 0, 1, 0
+	0x103<2> 3
+	rest 0xC	// 0.25 beats
+	0x103<1> 3, 1, 0
+	0x103<1> 3, 0, 0
+	rest 0x24	// 0.75 beats
+	0x103<1> 3, 1, 1
+	0x103<1> 3, 0, -1
+	rest 0x24	// 0.75 beats
+	0x103<1> 3, 1, 2
+	0x103<1> 3, 0, -2
+	rest 0x24	// 0.75 beats
+	0x103<1> 3, 1, 3
+	0x103<1> 3, 0, -3
+	rest 0x24	// 0.75 beats
+	0x103<1> 3, 1, 4
+	0x103<1> 3, 0, -4
+	rest 0x24	// 0.75 beats
+	0x103<1> 3, 1, 5
+	0x103<1> 3, 0, -5
+	rest 0x24	// 0.75 beats
+	0x103<1> 3, 1, 6
+	0x103<1> 3, 0, -6
+	rest 0x24	// 0.75 beats
+	0x103 3, 0
+	stop
+
+
+// 0.67 beats, slots 1-4
+
+// async function slotA67
+slotA67:
+	0x103 0, 1
+	0x103<3> 0
+	0x103<1> 0, 1, -4
+	0x103<1> 0, 0, 4
+	rest 0x30	// 1.0 beats
+	0x103<1> 0, 1, -3
+	0x103<1> 0, 0, 3
+	rest 0x20	// ~0.67 beats
+	0x103<1> 0, 1, -2
+	0x103<1> 0, 0, 2
+	rest 0x20	// ~0.67 beats
+	0x103<1> 0, 1, -1
+	0x103<1> 0, 0, 1
+	rest 0x10	// ~0.33 beats
+	async_call charge
+	0x102 -1, 2, 0, 1, 0
+	0x103<2> 0
+	rest 0x10	// ~0.33 beats
+	0x103<1> 0, 1, 0
+	0x103<1> 0, 0, 0
+	rest 0x20	// ~0.67 beats
+	0x103<1> 0, 1, 1
+	0x103<1> 0, 0, -1
+	rest 0x20	// ~0.67 beats
+	0x103<1> 0, 1, 2
+	0x103<1> 0, 0, -2
+	rest 0x20	// ~0.67 beats
+	0x103<1> 0, 1, 3
+	0x103<1> 0, 0, -3
+	rest 0x20	// ~0.67 beats
+	0x103<1> 0, 1, 4
+	0x103<1> 0, 0, -4
+	rest 0x20	// ~0.67 beats
+	0x103<1> 0, 1, 5
+	0x103<1> 0, 0, -5
+	rest 0x20	// ~0.67 beats
+	0x103<1> 0, 1, 6
+	0x103<1> 0, 0, -6
+	rest 0x20	// ~0.67 beats
+	0x103 0, 0
+	stop
+
+// async function slotB67
+slotB67:
+	0x103 1, 1
+	0x103<3> 1
+	0x103<1> 1, 1, -4
+	0x103<1> 1, 0, 4
+	rest 0x30	// 1.0 beats
+	0x103<1> 1, 1, -3
+	0x103<1> 1, 0, 3
+	rest 0x20	// ~0.67 beats
+	0x103<1> 1, 1, -2
+	0x103<1> 1, 0, 2
+	rest 0x20	// ~0.67 beats
+	0x103<1> 1, 1, -1
+	0x103<1> 1, 0, 1
+	rest 0x10	// ~0.33 beats
+	async_call charge
+	0x102 -1, 2, 0, 1, 0
+	0x103<2> 1
+	rest 0x10	// ~0.33 beats
+	0x103<1> 1, 1, 0
+	0x103<1> 1, 0, 0
+	rest 0x20	// ~0.67 beats
+	0x103<1> 1, 1, 1
+	0x103<1> 1, 0, -1
+	rest 0x20	// ~0.67 beats
+	0x103<1> 1, 1, 2
+	0x103<1> 1, 0, -2
+	rest 0x20	// ~0.67 beats
+	0x103<1> 1, 1, 3
+	0x103<1> 1, 0, -3
+	rest 0x20	// ~0.67 beats
+	0x103<1> 1, 1, 4
+	0x103<1> 1, 0, -4
+	rest 0x20	// ~0.67 beats
+	0x103<1> 1, 1, 5
+	0x103<1> 1, 0, -5
+	rest 0x20	// ~0.67 beats
+	0x103<1> 1, 1, 6
+	0x103<1> 1, 0, -6
+	rest 0x20	// ~0.67 beats
+	0x103 1, 0
+	stop
+
+// async function slotC67
+slotC67:
+	0x103 2, 1
+	0x103<3> 2
+	0x103<1> 2, 1, -4
+	0x103<1> 2, 0, 4
+	rest 0x20	// ~0.67 beats
+	0x103<1> 2, 1, -3
+	0x103<1> 2, 0, 3
+	rest 0x20	// ~0.67 beats
+	0x103<1> 2, 1, -2
+	0x103<1> 2, 0, 2
+	rest 0x20	// ~0.67 beats
+	0x103<1> 2, 1, -1
+	0x103<1> 2, 0, 1
+	rest 0x10	// ~0.33 beats
+	async_call charge
+	0x102 -1, 2, 0, 1, 0
+	0x103<2> 2
+	rest 0x10	// ~0.33 beats
+	0x103<1> 2, 1, 0
+	0x103<1> 2, 0, 0
+	rest 0x20	// ~0.67 beats
+	0x103<1> 2, 1, 1
+	0x103<1> 2, 0, -1
+	rest 0x20	// ~0.67 beats
+	0x103<1> 2, 1, 2
+	0x103<1> 2, 0, -2
+	rest 0x20	// ~0.67 beats
+	0x103<1> 2, 1, 3
+	0x103<1> 2, 0, -3
+	rest 0x20	// ~0.67 beats
+	0x103<1> 2, 1, 4
+	0x103<1> 2, 0, -4
+	rest 0x20	// ~0.67 beats
+	0x103<1> 2, 1, 5
+	0x103<1> 2, 0, -5
+	rest 0x20	// ~0.67 beats
+	0x103<1> 2, 1, 6
+	0x103<1> 2, 0, -6
+	rest 0x20	// ~0.67 beats
+	0x103 2, 0
+	stop
+
+// async function slotD67
+slotD67:
+	0x103 3, 1
+	0x103<3> 3
+	0x103<1> 3, 1, -4
+	0x103<1> 3, 0, 4
+	rest 0x30	// 1.0 beats
+	0x103<1> 3, 1, -3
+	0x103<1> 3, 0, 3
+	rest 0x20	// ~0.67 beats
+	0x103<1> 3, 1, -2
+	0x103<1> 3, 0, 2
+	rest 0x20	// ~0.67 beats
+	0x103<1> 3, 1, -1
+	0x103<1> 3, 0, 1
+	rest 0x10	// ~0.33 beats
+	async_call charge
+	0x102 -1, 2, 0, 1, 0
+	0x103<2> 3
+	rest 0x10	// ~0.33 beats
+	0x103<1> 3, 1, 0
+	0x103<1> 3, 0, 0
+	rest 0x20	// ~0.67 beats
+	0x103<1> 3, 1, 1
+	0x103<1> 3, 0, -1
+	rest 0x20	// ~0.67 beats
+	0x103<1> 3, 1, 2
+	0x103<1> 3, 0, -2
+	rest 0x20	// ~0.67 beats
+	0x103<1> 3, 1, 3
+	0x103<1> 3, 0, -3
+	rest 0x20	// ~0.67 beats
+	0x103<1> 3, 1, 4
+	0x103<1> 3, 0, -4
+	rest 0x20	// ~0.67 beats
+	0x103<1> 3, 1, 5
+	0x103<1> 3, 0, -5
+	rest 0x20	// ~0.67 beats
+	0x103<1> 3, 1, 6
+	0x103<1> 3, 0, -6
+	rest 0x20	// ~0.67 beats
+	0x103 3, 0
+	stop
+
+
+// 0.5 beats, slots 1-4
+
+// async function slotA50
+slotA50:
+0x103 0, 1
+0x103<3> 0
+0x103<1> 0, 1, -4
+0x103<1> 0, 0, 4
+rest 0x30	// 1.0 beats
+0x103<1> 0, 1, -3
+0x103<1> 0, 0, 3
+rest 0x18	// 0.5 beats
+0x103<1> 0, 1, -2
+0x103<1> 0, 0, 2
+rest 0x18	// 0.5 beats
+async_call charge
+0x102 -1, 2, 0, 1, 0
+0x103<2> 0
+0x103<1> 0, 1, -1
+0x103<1> 0, 0, 1
+rest 0x18	// 0.5 beats
+0x103<1> 0, 1, 0
+0x103<1> 0, 0, 0
+rest 0x18	// 0.5 beats
+0x103<1> 0, 1, 1
+0x103<1> 0, 0, -1
+rest 0x18	// 0.5 beats
+0x103<1> 0, 1, 2
+0x103<1> 0, 0, -2
+rest 0x18	// 0.5 beats
+0x103<1> 0, 1, 3
+0x103<1> 0, 0, -3
+rest 0x18	// 0.5 beats
+0x103<1> 0, 1, 4
+0x103<1> 0, 0, -4
+rest 0x18	// 0.5 beats
+0x103<1> 0, 1, 5
+0x103<1> 0, 0, -5
+rest 0x18	// 0.5 beats
+0x103<1> 0, 1, 6
+0x103<1> 0, 0, -6
+rest 0x18	// 0.5 beats
+0x103 0, 0
+stop 
+
+// async function slotB50
+slotB50:
+0x103 1, 1
+0x103<3> 1
+0x103<1> 1, 1, -4
+0x103<1> 1, 0, 4
+rest 0x30	// 1.0 beats
+0x103<1> 1, 1, -3
+0x103<1> 1, 0, 3
+rest 0x18	// 0.5 beats
+0x103<1> 1, 1, -2
+0x103<1> 1, 0, 2
+rest 0x18	// 0.5 beats
+async_call charge
+0x102 -1, 2, 0, 1, 0
+0x103<2> 1
+0x103<1> 1, 1, -1
+0x103<1> 1, 0, 1
+rest 0x18	// 0.5 beats
+0x103<1> 1, 1, 0
+0x103<1> 1, 0, 0
+rest 0x18	// 0.5 beats
+0x103<1> 1, 1, 1
+0x103<1> 1, 0, -1
+rest 0x18	// 0.5 beats
+0x103<1> 1, 1, 2
+0x103<1> 1, 0, -2
+rest 0x18	// 0.5 beats
+0x103<1> 1, 1, 3
+0x103<1> 1, 0, -3
+rest 0x18	// 0.5 beats
+0x103<1> 1, 1, 4
+0x103<1> 1, 0, -4
+rest 0x18	// 0.5 beats
+0x103<1> 1, 1, 5
+0x103<1> 1, 0, -5
+rest 0x18	// 0.5 beats
+0x103<1> 1, 1, 6
+0x103<1> 1, 0, -6
+rest 0x18	// 0.5 beats
+0x103 1, 0
+stop 
+
+// async function slotC50
+slotC50:
+0x103 2, 1
+0x103<3> 2
+0x103<1> 2, 1, -4
+0x103<1> 2, 0, 4
+rest 0x30	// 1.0 beats
+0x103<1> 2, 1, -3
+0x103<1> 2, 0, 3
+rest 0x18	// 0.5 beats
+0x103<1> 2, 1, -2
+0x103<1> 2, 0, 2
+rest 0x18	// 0.5 beats
+async_call charge
+0x102 -1, 2, 0, 1, 0
+0x103<2> 2
+0x103<1> 2, 1, -1
+0x103<1> 2, 0, 1
+rest 0x18	// 0.5 beats
+0x103<1> 2, 1, 0
+0x103<1> 2, 0, 0
+rest 0x18	// 0.5 beats
+0x103<1> 2, 1, 1
+0x103<1> 2, 0, -1
+rest 0x18	// 0.5 beats
+0x103<1> 2, 1, 2
+0x103<1> 2, 0, -2
+rest 0x18	// 0.5 beats
+0x103<1> 2, 1, 3
+0x103<1> 2, 0, -3
+rest 0x18	// 0.5 beats
+0x103<1> 2, 1, 4
+0x103<1> 2, 0, -4
+rest 0x18	// 0.5 beats
+0x103<1> 2, 1, 5
+0x103<1> 2, 0, -5
+rest 0x18	// 0.5 beats
+0x103<1> 2, 1, 6
+0x103<1> 2, 0, -6
+rest 0x18	// 0.5 beats
+0x103 2, 0
+stop 
+
+// async function slotD50
+slotD50:
+0x103 3, 1
+0x103<3> 3
+0x103<1> 3, 1, -4
+0x103<1> 3, 0, 4
+rest 0x30	// 1.0 beats
+0x103<1> 3, 1, -3
+0x103<1> 3, 0, 3
+rest 0x18	// 0.5 beats
+0x103<2> 3
+0x103<1> 3, 1, -2
+0x103<1> 3, 0, 2
+rest 0x18	// 0.5 beats
+async_call charge
+0x102 -1, 2, 0, 1, 0
+0x103<2> 3
+0x103<1> 3, 1, -1
+0x103<1> 3, 0, 1
+rest 0x18	// 0.5 beats
+0x103<1> 3, 1, 0
+0x103<1> 3, 0, 0
+rest 0x18	// 0.5 beats
+0x103<1> 3, 1, 1
+0x103<1> 3, 0, -1
+rest 0x18	// 0.5 beats
+0x103<1> 3, 1, 2
+0x103<1> 3, 0, -2
+rest 0x18	// 0.5 beats
+0x103<1> 3, 1, 3
+0x103<1> 3, 0, -3
+rest 0x18	// 0.5 beats
+0x103<1> 3, 1, 4
+0x103<1> 3, 0, -4
+rest 0x18	// 0.5 beats
+0x103<1> 3, 1, 5
+0x103<1> 3, 0, -5
+rest 0x18	// 0.5 beats
+0x103<1> 3, 1, 6
+0x103<1> 3, 0, -6
+rest 0x18	// 0.5 beats
+0x103 3, 0
+stop 
+
+
+// 0.33 beats, slots 1-4
+
+// async function slotA33
+slotA33:
+0x103 0, 1
+0x103<3> 0
+0x103<1> 0, 1, -4
+0x103<1> 0, 0, 4
+rest 0x30	// 1.0 beats
+0x103<1> 0, 1, -3
+0x103<1> 0, 0, 3
+rest 0x10	// 0.33 beats
+async_call charge
+0x102 -1, 2, 0, 1, 0
+0x103<2> 0
+0x103<1> 0, 1, -2
+0x103<1> 0, 0, 2
+rest 0x10	// 0.33 beats
+0x103<1> 0, 1, -1
+0x103<1> 0, 0, 1
+rest 0x10	// 0.33 beats
+0x103<1> 0, 1, 0
+0x103<1> 0, 0, 0
+rest 0x10	// 0.33 beats
+0x103<1> 0, 1, 1
+0x103<1> 0, 0, -1
+rest 0x10	// 0.33 beats
+0x103<1> 0, 1, 2
+0x103<1> 0, 0, -2
+rest 0x10	// 0.33 beats
+0x103<1> 0, 1, 3
+0x103<1> 0, 0, -3
+rest 0x10	// 0.33 beats
+0x103<1> 0, 1, 4
+0x103<1> 0, 0, -4
+rest 0x10	// 0.33 beats
+0x103<1> 0, 1, 5
+0x103<1> 0, 0, -5
+rest 0x10	// 0.33 beats
+0x103<1> 0, 1, 6
+0x103<1> 0, 0, -6
+rest 0x10	// 0.33 beats
+0x103 0, 0
+stop 
+
+// async function slotB33
+slotB33:
+0x103 1, 1
+0x103<3> 1
+0x103<1> 1, 1, -4
+0x103<1> 1, 0, 4
+rest 0x30	// 1.0 beats
+0x103<1> 1, 1, -3
+0x103<1> 1, 0, 3
+rest 0x10	// 0.33 beats
+async_call charge
+0x102 -1, 2, 0, 1, 0
+0x103<2> 1
+0x103<1> 1, 1, -2
+0x103<1> 1, 0, 2
+rest 0x10	// 0.33 beats
+0x103<1> 1, 1, -1
+0x103<1> 1, 0, 1
+rest 0x10	// 0.33 beats
+0x103<1> 1, 1, 0
+0x103<1> 1, 0, 0
+rest 0x10	// 0.33 beats
+0x103<1> 1, 1, 1
+0x103<1> 1, 0, -1
+rest 0x10	// 0.33 beats
+0x103<1> 1, 1, 2
+0x103<1> 1, 0, -2
+rest 0x10	// 0.33 beats
+0x103<1> 1, 1, 3
+0x103<1> 1, 0, -3
+rest 0x10	// 0.33 beats
+0x103<1> 1, 1, 4
+0x103<1> 1, 0, -4
+rest 0x10	// 0.33 beats
+0x103<1> 1, 1, 5
+0x103<1> 1, 0, -5
+rest 0x10	// 0.33 beats
+0x103<1> 1, 1, 6
+0x103<1> 1, 0, -6
+rest 0x10	// 0.33 beats
+0x103 1, 0
+stop 
+
+// async function slotC33
+slotC33:
+0x103 2, 1
+0x103<3> 2
+0x103<1> 2, 1, -4
+0x103<1> 2, 0, 4
+rest 0x30	// 1.0 beats
+0x103<1> 2, 1, -3
+0x103<1> 2, 0, 3
+rest 0x10	// 0.33 beats
+async_call charge
+0x102 -1, 2, 0, 1, 0
+0x103<2> 2
+0x103<1> 2, 1, -2
+0x103<1> 2, 0, 2
+rest 0x10	// 0.33 beats
+0x103<1> 2, 1, -1
+0x103<1> 2, 0, 1
+rest 0x10	// 0.33 beats
+0x103<1> 2, 1, 0
+0x103<1> 2, 0, 0
+rest 0x10	// 0.33 beats
+0x103<1> 2, 1, 1
+0x103<1> 2, 0, -1
+rest 0x10	// 0.33 beats
+0x103<1> 2, 1, 2
+0x103<1> 2, 0, -2
+rest 0x10	// 0.33 beats
+0x103<1> 2, 1, 3
+0x103<1> 2, 0, -3
+rest 0x10	// 0.33 beats
+0x103<1> 2, 1, 4
+0x103<1> 2, 0, -4
+rest 0x10	// 0.33 beats
+0x103<1> 2, 1, 5
+0x103<1> 2, 0, -5
+rest 0x10	// 0.33 beats
+0x103<1> 2, 1, 6
+0x103<1> 2, 0, -6
+rest 0x10	// 0.33 beats
+0x103 2, 0
+stop 
+
+// async function slotD33
+slotD33:
+0x103 3, 1
+0x103<3> 3
+0x103<1> 3, 1, -4
+0x103<1> 3, 0, 4
+rest 0x30	// 1.0 beats
+0x103<1> 3, 1, -3
+0x103<1> 3, 0, 3
+rest 0x10	// 0.33 beats
+async_call charge
+0x102 -1, 2, 0, 1, 0
+0x103<2> 3
+0x103<1> 3, 1, -2
+0x103<1> 3, 0, 2
+rest 0x10	// 0.33 beats
+0x103<1> 3, 1, -1
+0x103<1> 3, 0, 1
+rest 0x10	// 0.33 beats
+0x103<1> 3, 1, 0
+0x103<1> 3, 0, 0
+rest 0x10	// 0.33 beats
+0x103<1> 3, 1, 1
+0x103<1> 3, 0, -1
+rest 0x10	// 0.33 beats
+0x103<1> 3, 1, 2
+0x103<1> 3, 0, -2
+rest 0x10	// 0.33 beats
+0x103<1> 3, 1, 3
+0x103<1> 3, 0, -3
+rest 0x10	// 0.33 beats
+0x103<1> 3, 1, 4
+0x103<1> 3, 0, -4
+rest 0x10	// 0.33 beats
+0x103<1> 3, 1, 5
+0x103<1> 3, 0, -5
+rest 0x10	// 0.33 beats
+0x103<1> 3, 1, 6
+0x103<1> 3, 0, -6
+rest 0x10	// 0.33 beats
+0x103 3, 0
+stop 
+
+
+// 0.25 beats, slots 1-4
+
+// async function slotB25
+slotA25:
+0x103 0, 1
+0x103<3> 0
+0x103<1> 0, 1, -4
+0x103<1> 0, 0, 4
+rest 0x30	// 1.0 beats
+async_call charge
+0x102 -1, 2, 0, 1, 0
+0x103<2> 0
+0x103<1> 0, 1, -3
+0x103<1> 0, 0, 3
+rest 0xC	// 0.25 beats
+0x103<1> 0, 1, -2
+0x103<1> 0, 0, 2
+rest 0xC	// 0.25 beats
+0x103<1> 0, 1, -1
+0x103<1> 0, 0, 1
+rest 0xC	// 0.25 beats
+0x103<1> 0, 1, 0
+0x103<1> 0, 0, 0
+rest 0xC	// 0.25 beats
+0x103<1> 0, 1, 1
+0x103<1> 0, 0, -1
+rest 0xC	// 0.25 beats
+0x103<1> 0, 1, 2
+0x103<1> 0, 0, -2
+rest 0xC	// 0.25 beats
+0x103<1> 0, 1, 3
+0x103<1> 0, 0, -3
+rest 0xC	// 0.25 beats
+0x103<1> 0, 1, 4
+0x103<1> 0, 0, -4
+rest 0xC	// 0.25 beats
+0x103<1> 0, 1, 5
+0x103<1> 0, 0, -5
+rest 0xC	// 0.25 beats
+0x103<1> 0, 1, 6
+0x103<1> 0, 0, -6
+rest 0xC	// 0.25 beats
+0x103 0, 0
+stop 
+
+// async function slotB25
+slotB25:
+0x103 1, 1
+0x103<3> 1
+0x103<1> 1, 1, -4
+0x103<1> 1, 0, 4
+rest 0x30	// 1.0 beats
+async_call charge
+0x102 -1, 2, 0, 1, 0
+0x103<2> 1
+0x103<1> 1, 1, -3
+0x103<1> 1, 0, 3
+rest 0xC	// 0.25 beats
+0x103<1> 1, 1, -2
+0x103<1> 1, 0, 2
+rest 0xC	// 0.25 beats
+0x103<1> 1, 1, -1
+0x103<1> 1, 0, 1
+rest 0xC	// 0.25 beats
+0x103<1> 1, 1, 0
+0x103<1> 1, 0, 0
+rest 0xC	// 0.25 beats
+0x103<1> 1, 1, 1
+0x103<1> 1, 0, -1
+rest 0xC	// 0.25 beats
+0x103<1> 1, 1, 2
+0x103<1> 1, 0, -2
+rest 0xC	// 0.25 beats
+0x103<1> 1, 1, 3
+0x103<1> 1, 0, -3
+rest 0xC	// 0.25 beats
+0x103<1> 1, 1, 4
+0x103<1> 1, 0, -4
+rest 0xC	// 0.25 beats
+0x103<1> 1, 1, 5
+0x103<1> 1, 0, -5
+rest 0xC	// 0.25 beats
+0x103<1> 1, 1, 6
+0x103<1> 1, 0, -6
+rest 0xC	// 0.25 beats
+0x103 1, 0
+stop 
+
+// async function slotC25
+slotC25:
+0x103 2, 1
+0x103<3> 2
+0x103<1> 2, 1, -4
+0x103<1> 2, 0, 4
+rest 0x30	// 1.0 beats
+async_call charge
+0x102 -1, 2, 0, 1, 0
+0x103<2> 2
+0x103<1> 2, 1, -3
+0x103<1> 2, 0, 3
+rest 0xC	// 0.25 beats
+0x103<1> 2, 1, -2
+0x103<1> 2, 0, 2
+rest 0xC	// 0.25 beats
+0x103<1> 2, 1, -1
+0x103<1> 2, 0, 1
+rest 0xC	// 0.25 beats
+0x103<1> 2, 1, 0
+0x103<1> 2, 0, 0
+rest 0xC	// 0.25 beats
+0x103<1> 2, 1, 1
+0x103<1> 2, 0, -1
+rest 0xC	// 0.25 beats
+0x103<1> 2, 1, 2
+0x103<1> 2, 0, -2
+rest 0xC	// 0.25 beats
+0x103<1> 2, 1, 3
+0x103<1> 2, 0, -3
+rest 0xC	// 0.25 beats
+0x103<1> 2, 1, 4
+0x103<1> 2, 0, -4
+rest 0xC	// 0.25 beats
+0x103<1> 2, 1, 5
+0x103<1> 2, 0, -5
+rest 0xC	// 0.25 beats
+0x103<1> 2, 1, 6
+0x103<1> 2, 0, -6
+rest 0xC	// 0.25 beats
+0x103 2, 0
+stop 
+
+// async function slotD25
+slotD25:
+0x103 3, 1
+0x103<3> 3
+0x103<1> 3, 1, -4
+0x103<1> 3, 0, 4
+rest 0x30	// 1.0 beats
+async_call charge
+0x102 -1, 2, 0, 1, 0
+0x103<2> 3
+0x103<1> 3, 1, -3
+0x103<1> 3, 0, 3
+rest 0xC	// 0.25 beats
+0x103<1> 3, 1, -2
+0x103<1> 3, 0, 2
+rest 0xC	// 0.25 beats
+0x103<1> 3, 1, -1
+0x103<1> 3, 0, 1
+rest 0xC	// 0.25 beats
+0x103<1> 3, 1, 0
+0x103<1> 3, 0, 0
+rest 0xC	// 0.25 beats
+0x103<1> 3, 1, 1
+0x103<1> 3, 0, -1
+rest 0xC	// 0.25 beats
+0x103<1> 3, 1, 2
+0x103<1> 3, 0, -2
+rest 0xC	// 0.25 beats
+0x103<1> 3, 1, 3
+0x103<1> 3, 0, -3
+rest 0xC	// 0.25 beats
+0x103<1> 3, 1, 4
+0x103<1> 3, 0, -4
+rest 0xC	// 0.25 beats
+0x103<1> 3, 1, 5
+0x103<1> 3, 0, -5
+rest 0xC	// 0.25 beats
+0x103<1> 3, 1, 6
+0x103<1> 3, 0, -6
+rest 0xC	// 0.25 beats
+0x103 3, 0
+stop 
+
+
+// Please use the subs below as it autopicks the widgets at a certain slot.
+
+// async function widget200
+widget200:
+0x103<4> 
+switch 
+	case 0
+		async_call slotB200
+		break 
+	case 1
+		async_call slotC200
+		break 
+	case 2
+		async_call slotD200
+		break 
+	case 3
+		async_call slotA200
+		break 
+endswitch 
+stop
+
+// async function widget100
+widget100:
+0x103<4> 
+switch 
+	case 0
+		async_call slotB100
+		break 
+	case 1
+		async_call slotC100
+		break 
+	case 2
+		async_call slotD100
+		break 
+	case 3
+		async_call slotA100
+		break 
+endswitch 
+stop
+
+// async function widget75
+widget75:
+0x103<4> 
+switch 
+	case 0
+		async_call slotB75
+		break 
+	case 1
+		async_call slotC75
+		break 
+	case 2
+		async_call slotD75
+		break 
+	case 3
+		async_call slotA75
+		break 
+endswitch 
+stop
+
+// async function widget67
+widget67:
+0x103<4> 
+switch 
+	case 0
+		async_call slotB67
+		break 
+	case 1
+		async_call slotC67
+		break 
+	case 2
+		async_call slotD67
+		break 
+	case 3
+		async_call slotA67
+		break 
+endswitch 
+stop
+
+// async function widget50
+widget50:
+0x103<4> 
+switch 
+	case 0
+		async_call slotB50
+		break 
+	case 1
+		async_call slotC50
+		break 
+	case 2
+		async_call slotD50
+		break 
+	case 3
+		async_call slotA50
+		break 
+endswitch 
+stop
+
+// async function widget33
+widget33:
+0x103<4> 
+switch 
+	case 0
+		async_call slotB33
+		break 
+	case 1
+		async_call slotC33
+		break 
+	case 2
+		async_call slotD33
+		break 
+	case 3
+		async_call slotA33
+		break 
+endswitch 
+stop
+
+// async function widget25
+widget25:
+0x103<4> 
+switch 
+	case 0
+		async_call slotB25
+		break 
+	case 1
+		async_call slotC25
+		break 
+	case 2
+		async_call slotD25
+		break 
+	case 3
+		async_call slotA25
+		break 
+endswitch 
+stop
+
+
+// The charge sub. Please use them too, as it's crucial.
+
+// async function charge
+charge:
+rest 0xC	// 0.25 beats
+0x101<2> 2
+rest 0x24	// 0.75 beats
+0x101<3> 2
+stop
+

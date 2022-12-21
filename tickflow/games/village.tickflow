@@ -18,7 +18,7 @@ village_load:
         goto 0x1000
     label 0x1001 //village_break1:
 
-    // screwbot factory
+    // screwbots
     set_cellanim 3, u"rom:/cellanim/rvlRobot_v0.zlib", -1
     label 0x1010 //village_loop1:
         cellanim_busy 3
@@ -87,11 +87,11 @@ village_load:
     0xBD 
     0x8C<2> 5
 
-    // aac
+    // ---- aac ----
     0x61 0, u"Layton_Medley_Part4"
     rest 0xC
 
-    // sfx
+    // ---- sfx ----
     set_sfx 1, u"GROUP_TANGO"
     rest 0xC
     set_sfx 2, u"GROUP_ROBOT_KOJO"
@@ -101,7 +101,7 @@ village_load:
     sub 3
     0x83 0
 
-    // finally, assign to the necessary scenes
+    // ---- assign to scenes ----
     game_cellanim SCENE_ctrTango, 2
     game_effect SCENE_ctrTango, 5
     game_model SCENE_ctrTango, 1
@@ -220,9 +220,31 @@ village_robot05:
 
 village_dough06:
     0x8F 3
+    0x103
+    async_sub 0x56
     rest 0x18
     fade<1> 1, 1, 1
     input 1
+
+    0x100 0, false, 0x30, 0xC0, 0x30
+    rest 0x24
+    0x100 0, false, 0x30, 0xC0, 0x30
+    rest 0x24
+    0x100 1, false, 0x30, 0xC0, 0x30
+    rest 0x18
+    rest 0x60
+
+    rest 0xC0
+
+    0x100 0, false, 0x30, 0xC0, 0x30
+    rest 0x24
+    0x100 0, false, 0x30, 0xC0, 0x30
+    rest 0x24
+    0x100 0, false, 0x30, 0xC0, 0x30
+    rest 0x18
+    0x100 0, false, 0x30, 0xC0, 0x30
+    rest 0x24
+    0x100 0, false, 0x30, 0xC0, 0x30
 
 stop
 

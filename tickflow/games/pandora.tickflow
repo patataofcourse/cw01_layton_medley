@@ -1,0 +1,99 @@
+// async function pandora_load
+pandora_load:
+    // ---- cellanims ----
+
+    // tangotronic -> moai
+    remove_cellanim 2
+    label 0x1100 // pandora_loop0
+        cellanim_busy 2
+        if 0
+            goto 0x1101
+        endif 
+        rest 1
+        goto 0x1100 // pandora_loop0
+    label 0x1101 // pandora_break0
+    set_cellanim 2, u"rom:/cellanim/ntrMonomane.zlib", -1
+    rest 0xC
+
+    // screwbots -> bts
+    remove_cellanim 3
+    label 0x1110 // pandora_loop1
+        cellanim_busy 3
+        if 0
+            goto 0x1111 //pandora_break1
+        endif 
+        rest 1
+        goto 0x1110 // pandora_loop1
+    label 0x1111 // pandora_break1
+    set_cellanim 2, u"rom:/cellanim/ntrAssemble.zlib", -1
+    rest 0xC
+
+    // ---- layouts ----
+    // (none)
+
+    // ---- effects ----
+
+    // tangotronic
+    remove_effect 5
+
+    // ---- models ----
+
+    // tangotronic
+    remove_model 1
+    remove_model 4
+    remove_model 5
+    
+    // ---- sfx ----
+
+    // tangotronic -> moai
+    remove_sfx 1
+    rest 0xC
+    sub 3
+    set_sfx 1, u"GROUP_NTR_MOAI"
+    rest 0xC
+
+    // screwbots -> bts
+    remove_sfx 2
+    rest 0xC
+    sub 3
+    set_sfx 2, u"GROUP_NTR_ASSEMBLE"
+    rest 0xC
+
+    // ---- assign to scenes ----
+    game_cellanim SCENE_PORT_ntrMoai, 2
+    game_cellanim SCENE_PORT_ntrAssembly, 2
+
+    stop
+
+// async function pandora_moai07
+pandora_moai07:
+    0x8F 3
+    call moai_init
+    rest 0x18
+    fade<1> 1, 1, 1
+    input 1
+
+    stop
+
+// async function pandora_bts08
+pandora_bts08:
+    0x8F 3
+
+    rest 0x18
+    fade<1> 1, 1, 1
+    input 1
+
+    stop
+
+// function moai_init
+moai_init:
+    0x107 0, 0
+    0x107 1, 0
+    0x10B 
+    if 0
+        0x104<1> 2, 0, 0
+    endif 
+    0x104 2, 0, 0x1000B1B, 0x3C, 0
+    0x104 2, 1, 0x1000B1A, 0x3C, 0
+    0x104 2, 2, 0x1000B19, 0x78, 0
+    return
