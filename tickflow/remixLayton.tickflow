@@ -255,26 +255,26 @@ start:
 assets_:
     set_cat 0
     0x92 3, 0x14
-    0x93 3, 0x10, "remix_cp_RM_NRM_Hi", "remix_cp_RM_NRM_Ng"
-    0x94 0, "result_common_Hi", "result_common_Ok", "result_common_Ng"
+    0x93 3, 0x10, "remix_Layton_RM_NRM_Hi", "remix_Layton_RM_NRM_Ng"
+    0x94 0x10, "result_Layton_Ok", "result_Layton_Ok", "result_Layton_Ok"
     0x95 0x10, "remix_caption"
     0x92 4, 0x14
-    0x93 4, 0x10, "remix_cp_RM_KEP_Hi", "remix_cp_RM_KEP_Ng"
-    0x94 0, "result_common_Hi", "result_common_Ok", "result_common_Ng"
+    0x93 4, 0x10, "remix_cp_Layton_KEP_Hi", "remix_cp_Layton_KEP_Ng"
+    0x94 0x10, "result_Layton_Ok", "result_Layton_Ok", "result_Layton_Ok"
     0x95 0x10, "remix_caption"
     0x92 5, 0x14
-    0x93 5, 0x10, "remix_cp_RM_AIM_Hi", "remix_cp_RM_AIM_Ng"
-    0x94 0, "result_common_Hi", "result_common_Ok", "result_common_Ng"
+    0x93 5, 0x10, "remix_cp_Layton_AIM_Hi", "remix_cp_Layton_AIM_Ng"
+    0x94 0x10, "result_Layton_Ok", "result_Layton_Ok", "result_Layton_Ok"
     0x95 0x10, "remix_caption"
     0x92 6, 0x14
-    0x93 6, 0x10, "remix_cp_RM_RPT_Hi", "remix_cp_RM_RPT_Ng"
-    0x94 0, "result_common_Hi", "result_common_Ok", "result_common_Ng"
-    0x95 0x10, "remix_caption"
+    0x93 6, 0x10, "remix_Layton_RM_RPT_Hi", "remix_Layton_RM_RPT_Ng"
+    0x94 0x10, "result_Layton_Ok", "result_Layton_Ok", "result_Layton_Ok"
     0x92 7, 0x14
+    //TODO: skill star messages
     0x93 7, 0x10, "remix_cp_STAR_Hi", "remix_cp_STAR_Ng"
-    0x94 0, "result_common_Hi", "result_common_Ok", "result_common_Ng"
+    0x94 0x10, "result_Layton_Ok", "result_Layton_Ok", "result_Layton_Ok"
     0x95 0x10, "remix_caption"
-    0x95 0x10, "remix_LED_caption"
+    0x95 0x10, "remix_Layton_caption"
     // If you include a Skill Star in your Remix, change the Y value of 0x98 X, Y to however many inputs are done while the Skill Star is forming. For example, Final Remix sets it to 4 because there are 4 hits needed for the last LumBEARjack object.
     0x98 1, 1
     rest 0x60

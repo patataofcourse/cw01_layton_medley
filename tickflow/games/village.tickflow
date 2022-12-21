@@ -126,8 +126,8 @@ village_tango00:
     input 1
 
     0xB0
-    0xB0<4> 0x10, "result_common_Hi"
-    0xB0<5> 0x10, "result_common_Ng"
+    0xB0<4> 0xB, "remix_Layton_song_title_cv"
+    0xB0<5> 0xB, "remix_Layton_song_artist"
     0xB0<7>
     rest 0xC0
     0xB0<9>
